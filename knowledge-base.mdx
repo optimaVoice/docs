@@ -1,0 +1,395 @@
+---
+title: "Knowledge Base"
+description: "Upload documents and content for your agent to reference"
+---
+
+## Overview
+
+The Knowledge Base lets your agents answer detailed questions by referencing your uploaded content. Upload PDFs, documents, website links, or text snippets - your agent will search and quote directly from them.
+
+**What you can upload:**
+- PDF documents (manuals, guides, policies)
+- Text files (.txt, .md)
+- Website URLs (automatically crawled)
+- Text snippets (FAQ answers, procedures)
+
+**Max storage:** 50 MB per organization
+
+---
+
+## How It Works
+
+1. **Upload:** Add documents or content to your knowledge base
+2. **Processing:** Content is indexed for search (30-60 seconds)
+3. **Query:** During calls, agents search your knowledge when answering questions
+4. **Response:** Agents quote directly from your documents
+
+<Tip>
+Agents cite sources when answering from knowledge base: "According to your FAQ document..."
+</Tip>
+
+---
+
+## Adding Knowledge
+
+### Upload Files
+
+**Supported formats:**
+- PDF (.pdf)
+- Text (.txt, .md)
+- Word (.doc, .docx)
+- Max file size: 10 MB per file
+
+**Steps:**
+1. Click **"Upload Files"** button
+2. Select one or more files
+3. Files upload and process automatically
+4. Green checkmark appears when ready
+
+<Note>
+Processing takes 30-60 seconds. Your agent can't access the content until processing completes.
+</Note>
+
+### Add Website URL
+
+Import content from any public website:
+
+1. Click **"Add URL"** button
+2. Enter website address (e.g., https://example.com/faq)
+3. Click **"Import"**
+4. Content is crawled and indexed
+
+**What gets imported:**
+- Main text content
+- Headings and structure
+- Links within the page (optional)
+
+**Not imported:**
+- Images
+- Videos
+- Forms
+- Private/login-required pages
+
+<Warning>
+Only import content you have permission to use. Respect copyright and terms of service.
+</Warning>
+
+### Create Text Snippet
+
+For quick FAQ-style answers:
+
+1. Click **"Text Snippet"** button
+2. Enter **Title** (question or topic)
+3. Enter **Content** (answer or information)
+4. Click **"Save"**
+
+**Example:**
+```
+Title: Return Policy
+Content: We accept returns within 30 days of purchase with original receipt. Items must be in new, unused condition. Shipping fees are non-refundable. Contact support@example.com to initiate a return.
+```
+
+---
+
+## Organizing Knowledge
+
+### Folders
+
+Keep knowledge organized with folders:
+
+**Create folder:**
+1. Click **"New Folder"** button
+2. Name your folder (e.g., "Product Manuals," "Policies," "FAQs")
+3. Click **"Create"**
+
+**Move items into folders:**
+1. Drag and drop items onto folder
+2. Or use item menu → "Move to folder"
+
+**Navigate:**
+- Click folder to view contents
+- Click back arrow to return to root
+
+<Tip>
+Use folders to separate different knowledge types: Product Info, Company Policies, FAQs, Procedures
+</Tip>
+
+### Reordering
+
+Drag and drop items to reorder priority:
+
+- **Items at top** = searched first
+- **Items at bottom** = searched last
+
+Use this to prioritize frequently accessed information.
+
+---
+
+## Linking Knowledge to Agents
+
+Knowledge is **organization-level** - all agents can access it.
+
+To limit which agents use specific knowledge:
+
+1. Go to agent settings
+2. Find **Knowledge Base** card
+3. Select which folders/items this agent can access
+4. Unselected knowledge won't appear in searches for that agent
+
+<Note>
+This feature allows department-specific knowledge. Sales agent sees product docs, support agent sees troubleshooting guides.
+</Note>
+
+---
+
+## Editing & Managing
+
+### Edit Item
+
+1. Click item menu (⋮ three dots)
+2. Select **"Edit"**
+3. Update title or content
+4. Click **"Save"**
+
+**Changes take effect immediately** - no reprocessing needed.
+
+### Delete Item
+
+1. Click item menu (⋮)
+2. Select **"Delete"**
+3. Confirm deletion
+
+<Warning>
+Deletion is permanent. Agents will no longer have access to this information.
+</Warning>
+
+### View Details
+
+Click any item to view:
+- **Title** and content preview
+- **File size** and type
+- **Upload date**
+- **Last modified**
+- **Usage stats** (how often agents reference it)
+
+---
+
+## Best Practices
+
+### Content Preparation
+
+✅ **DO:**
+- **Use clear headings** (helps agents find sections)
+- **Write in plain language** (agents quote verbatim)
+- **Keep information current** (update docs regularly)
+- **Structure content logically** (Q&A format works well)
+- **Include common questions** customers ask
+
+❌ **DON'T:**
+- Upload scanned images (use OCR to convert to text first)
+- Use complex formatting (tables might not parse correctly)
+- Include confidential data (passwords, SSNs, internal memos)
+- Upload outdated pricing or policies
+
+### File Organization
+
+**Good structure:**
+```
+📁 Product Information
+  - Product Catalog.pdf
+  - Pricing Sheet.pdf
+  - Technical Specs.pdf
+
+📁 Company Policies
+  - Return Policy.txt
+  - Shipping Policy.txt
+  - Privacy Policy.pdf
+
+📁 FAQs
+  - Common Questions.txt
+  - Troubleshooting Guide.pdf
+```
+
+### Updating Content
+
+When information changes:
+1. **Edit existing items** (don't duplicate)
+2. **Delete outdated versions**
+3. **Test with agent** to verify new answers
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Agent isn't using my knowledge base">
+    **Possible causes:**
+    - Knowledge still processing (wait 60 seconds)
+    - Agent instructions don't mention using knowledge
+    - Question doesn't match content
+    
+    **Solutions:**
+    - Check processing status (should show green checkmark)
+    - Add to instructions: "Use the knowledge base to answer detailed questions"
+    - Make content more discoverable (use clear headings, Q&A format)
+  </Accordion>
+  
+  <Accordion title="Agent gives wrong information from knowledge base">
+    **Possible causes:**
+    - Outdated content in knowledge base
+    - Content is ambiguous or unclear
+    - Multiple conflicting sources
+    
+    **Solutions:**
+    - Review and update content
+    - Delete old/incorrect versions
+    - Rewrite content more clearly
+    - Put correct information higher in priority (drag to top)
+  </Accordion>
+  
+  <Accordion title="Upload fails">
+    **Possible causes:**
+    - File too large (>10 MB)
+    - Unsupported format
+    - Storage limit reached (50 MB org limit)
+    
+    **Solutions:**
+    - Compress PDF or split into smaller files
+    - Convert to supported format (.pdf, .txt, .docx)
+    - Delete unused knowledge to free space
+  </Accordion>
+  
+  <Accordion title="Website URL import fails">
+    **Possible causes:**
+    - Page requires login
+    - Website blocks crawlers (robots.txt)
+    - Page is dynamically loaded (JavaScript)
+    
+    **Solutions:**
+    - Copy content manually into text snippet instead
+    - Use PDF export of webpage
+    - Contact support for assistance
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Search & Query
+
+### How Agents Search
+
+When a customer asks a question:
+1. Agent identifies key terms
+2. Searches knowledge base for relevant content
+3. Reads matching sections
+4. Formulates answer using exact quotes
+
+**Example:**
+- **Customer:** "What's your return policy?"
+- **Agent searches:** "return policy"
+- **Finds:** Return Policy.pdf, page 2
+- **Agent responds:** "According to our return policy, we accept returns within 30 days of purchase with the original receipt..."
+
+### Improving Search Results
+
+Make content more discoverable:
+- **Use customer language** (not internal jargon)
+- **Include synonyms** ("refund" and "return")
+- **Answer questions directly** (start with "Yes" or "No")
+- **Repeat key terms** throughout content
+
+---
+
+## Storage Limits
+
+**Per organization:** 50 MB total
+
+**Typical usage:**
+- Text file (.txt): ~10-50 KB
+- PDF manual: 1-5 MB
+- Website page: ~100-500 KB
+
+**50 MB holds approximately:**
+- 500 text snippets
+- 10-25 PDF manuals
+- 50-100 website pages
+- Or mix of all types
+
+**When you hit the limit:**
+1. Delete unused knowledge
+2. Compress large PDFs
+3. Upgrade plan for more storage (coming soon)
+
+---
+
+## Security & Privacy
+
+### What We Store
+
+- Your uploaded files (encrypted at rest)
+- Processed text for search indexing
+- Upload metadata (date, size, title)
+
+### What We Don't Store
+
+- Temporary/session data
+- Intermediate processing files
+- User access logs beyond 90 days
+
+### Access Control
+
+- **Organization-level:** All team members see all knowledge
+- **Agent-level:** Restrict which agents use specific knowledge
+- **Customer-level:** Customers never see knowledge base directly (agents quote it)
+
+<Warning>
+Don't upload sensitive information like passwords, API keys, or customer PII. Knowledge is accessible to all team members in your organization.
+</Warning>
+
+---
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Can multiple agents use the same knowledge?">
+    Yes. Knowledge is shared across all agents in your organization. Each agent can be configured to use specific folders or all knowledge.
+  </Accordion>
+  
+  <Accordion title="How often should I update my knowledge base?">
+    Update whenever information changes (pricing, policies, products). Review quarterly to remove outdated content. Agents quote verbatim, so accuracy is critical.
+  </Accordion>
+  
+  <Accordion title="Can I import from Google Docs or Notion?">
+    Not directly. Export to PDF or copy text into a snippet. We're adding direct integrations soon.
+  </Accordion>
+  
+  <Accordion title="Is there a limit on number of items?">
+    No item count limit - only 50 MB storage limit. You can have 1,000 small text files or 10 large PDFs.
+  </Accordion>
+  
+  <Accordion title="What happens if I delete knowledge an agent is using?">
+    Agent immediately loses access. Future calls won't reference that content. Active calls continue with cached data.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Test Knowledge" icon="flask" href="/getting-started#step-7-make-a-test-call">
+    Call your agent and ask questions from your knowledge base
+  </Card>
+  
+  <Card title="Configure Agents" icon="sliders" href="/agent-configuration">
+    Instruct agents when to use knowledge vs when to answer directly
+  </Card>
+  
+  <Card title="View Call Logs" icon="list" href="/call-management">
+    See how agents are using knowledge in real conversations
+  </Card>
+  
+  <Card title="Add Actions" icon="plug" href="/actions">
+    Connect agents to external tools and automations
+  </Card>
+</CardGroup>
