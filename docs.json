@@ -17,7 +17,8 @@
             "group": "Getting Started",
             "pages": [
               "getting-started",
-              "agent-configuration"
+              "agent-configuration",
+              "voice-selection"
             ]
           },
           {
