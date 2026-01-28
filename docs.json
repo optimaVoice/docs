@@ -16,7 +16,8 @@
           {
             "group": "Getting Started",
             "pages": [
-              "getting-started"
+              "getting-started",
+              "agent-configuration"
             ]
           },
           {

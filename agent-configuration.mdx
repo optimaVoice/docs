@@ -1,0 +1,409 @@
+---
+title: "Agent Configuration"
+description: "Customize your AI voice agent's behavior, voice, and settings"
+---
+
+## Overview
+
+After creating your agent, you can fine-tune every aspect of its behavior. This guide covers all configuration options available on the agent settings page.
+
+<Note>
+Changes to your agent take effect immediately for new calls. Active calls continue with the previous configuration.
+</Note>
+
+---
+
+## Identity & Purpose
+
+The most important setting - this defines how your agent thinks and responds.
+
+### What are Voice Instructions?
+
+Voice Instructions tell your agent:
+- **Who it is** (receptionist, sales assistant, support agent)
+- **What it knows** (business info, services, policies)
+- **How to respond** (tone, style, what to say/not say)
+- **When to transfer** (escalation rules)
+
+### Writing Effective Instructions
+
+**Character Limits:**
+- Minimum: 50 characters
+- Maximum: 2,000 characters
+
+**Best Practices:**
+
+<AccordionGroup>
+  <Accordion title="✅ DO: Be specific and actionable">
+    **Good:**
+    ```
+    You are the receptionist for Bright Smile Dental. We offer cleanings ($150), 
+    fillings ($200-400), and teeth whitening ($500). We're open Monday-Friday 
+    9AM-5PM. We accept Delta Dental, Cigna, and Aetna insurance. If someone asks 
+    about emergency services, tell them to call our emergency line at 555-0199.
+    ```
+    
+    **Why it works:** Clear facts, specific pricing, exact hours, named insurances.
+  </Accordion>
+
+  <Accordion title="❌ DON'T: Be vague or general">
+    **Bad:**
+    ```
+    You are a dental office assistant. Answer questions about our services.
+    ```
+    
+    **Why it fails:** No specifics. Agent won't know what services you offer, pricing, hours, or policies.
+  </Accordion>
+
+  <Accordion title="✅ DO: Include common scenarios">
+    **Good:**
+    ```
+    If someone wants to book an appointment, collect:
+    - Their full name
+    - Preferred date and time
+    - Reason for visit (cleaning, filling, emergency)
+    - Insurance provider (if applicable)
+    
+    Then tell them: "I've noted your request for [date/time]. Our office will 
+    call you back within 2 hours to confirm."
+    ```
+    
+    **Why it works:** Step-by-step process, clear data collection, sets expectations.
+  </Accordion>
+
+  <Accordion title="✅ DO: Set boundaries">
+    **Good:**
+    ```
+    Do NOT:
+    - Give medical advice
+    - Confirm appointments without manager approval
+    - Share other patients' information
+    - Promise refunds (transfer to manager instead)
+    ```
+    
+    **Why it works:** Prevents agent from overstepping, protects your business.
+  </Accordion>
+</AccordionGroup>
+
+### AI Refinement (Experimental)
+
+Use AI to improve your instructions:
+
+1. Click **"Refine with AI"** button (sparkles icon)
+2. Tell the AI what to improve:
+   - "Make it more professional"
+   - "Add information about our return policy"
+   - "Sound friendlier for retail customers"
+3. Review the before/after comparison
+4. Click **"Apply"** if you like the changes
+
+<Tip>
+Refinement works best with specific feedback. Instead of "make it better," try "add our cancellation policy: 24 hours notice required."
+</Tip>
+
+---
+
+## Greeting Message
+
+The first thing callers hear when your agent answers.
+
+### Guidelines
+
+**Character Limits:**
+- Minimum: 20 characters
+- Maximum: 200 characters
+
+**Best Practices:**
+
+<CodeGroup>
+```text Professional
+"Thank you for calling Bright Smile Dental. This is Emma, your AI assistant. How can I help you today?"
+```
+
+```text Friendly
+"Hey there! You've reached Pete's Pizza. I'm your virtual order assistant. What can I get started for you?"
+```
+
+```text Concise
+"Smith & Associates. How may I direct your call?"
+```
+</CodeGroup>
+
+<Warning>
+Keep it under 15 seconds when spoken. Callers hang up if the greeting is too long.
+</Warning>
+
+### What to Include
+
+✅ **Always include:**
+- Business name
+- Agent identification (optional: "AI assistant" for transparency)
+- Clear call-to-action
+
+❌ **Avoid:**
+- Menu options ("Press 1 for...") - agent handles this conversationally
+- Legal disclaimers - put these in instructions instead
+- Multiple questions - one question is enough
+
+---
+
+## Voice Selection
+
+Choose from 100+ professional AI voices.
+
+### Finding the Right Voice
+
+1. **Use Filters:**
+   - **Language:** 50+ languages available
+   - **Gender:** Male, Female, or All
+   - **Search:** Type keywords like "professional," "friendly," "young"
+
+2. **Preview Voices:**
+   - Click the **play button** (▶) next to any voice
+   - Listen to sample phrases in context
+   - Test 3-5 before deciding
+
+3. **Match Your Brand:**
+   - **Law firm:** Calm, authoritative voice
+   - **Kids store:** Energetic, friendly voice
+   - **Medical office:** Warm, trustworthy voice
+   - **Tech support:** Clear, patient voice
+
+<Tip>
+You can change voices anytime. Test new voices with the "Test Agent" feature before going live.
+</Tip>
+
+### Voice Quality
+
+All voices are:
+- **HD quality** (24kHz sample rate)
+- **Natural pronunciation** (handles complex words)
+- **Consistent** (same voice across all calls)
+- **Low latency** (<300ms response time)
+
+---
+
+## Phone Number Connection
+
+Assign a phone number so customers can reach your agent.
+
+### Assigning a Number
+
+1. Go to **Phone Numbers** in sidebar
+2. Find an available number
+3. Click **"Assign to Agent"**
+4. Select this agent
+5. Click **"Assign"**
+
+<Note>
+One phone number can only be assigned to one agent at a time. To reassign, unassign from the current agent first.
+</Note>
+
+### Testing Your Number
+
+After assignment:
+1. Click **"Test"** button in agent header
+2. Call the number from your phone
+3. Verify:
+   - Greeting plays correctly
+   - Agent responds to questions
+   - Voice quality is clear
+
+---
+
+## Knowledge Base
+
+Upload documents so your agent can answer detailed questions.
+
+### What You Can Upload
+
+- **PDFs:** Product manuals, price lists, policies
+- **Text files:** FAQs, knowledge base articles
+- **Word docs:** Standard operating procedures
+- **Max file size:** 10 MB per file
+- **Max total:** 50 MB per agent
+
+### How It Works
+
+1. **Upload:** Click **"Add Knowledge"** → Choose files
+2. **Processing:** Files are chunked and indexed (takes 30-60 seconds)
+3. **Querying:** When a caller asks a question, agent searches your knowledge base
+4. **Response:** Agent answers using exact information from your documents
+
+<Tip>
+**Pro tip:** Upload your FAQ document. The agent will give word-for-word answers from your approved content.
+</Tip>
+
+### Best Practices
+
+✅ **DO:**
+- Upload well-structured documents (clear headings, sections)
+- Keep information up-to-date
+- Use plain language (agent quotes directly from docs)
+
+❌ **DON'T:**
+- Upload confidential customer data
+- Include outdated pricing
+- Upload scanned images (use OCR text instead)
+
+---
+
+## Actions & Integrations
+
+Connect your agent to external tools and services.
+
+### Available Actions
+
+<CardGroup cols={2}>
+  <Card title="Google Calendar" icon="calendar">
+    Book appointments directly into your calendar
+  </Card>
+  
+  <Card title="Slack" icon="slack">
+    Send notifications to your team channels
+  </Card>
+  
+  <Card title="Gmail" icon="envelope">
+    Send confirmation emails automatically
+  </Card>
+  
+  <Card title="Custom Webhooks" icon="webhook">
+    Trigger any HTTP endpoint
+  </Card>
+</CardGroup>
+
+### Connecting an Action
+
+1. Click **"Add Action"** in Actions card
+2. Browse available integrations
+3. Click **"Connect"**
+4. Authorize access (OAuth popup)
+5. Configure trigger conditions
+
+<Note>
+Actions are powered by Composio MCP. New integrations are added regularly.
+</Note>
+
+---
+
+## Advanced Settings
+
+Fine-tune your agent's behavior.
+
+### Creativity (Temperature)
+
+Controls how creative vs. factual your agent's responses are.
+
+**Scale:** 0.0 (Factual) to 1.0 (Creative)
+
+| Level | Temperature | Best For |
+|-------|-------------|----------|
+| **Conservative** | 0.0 - 0.3 | Medical, legal, technical support |
+| **Focused** | 0.3 - 0.5 | Customer service, scheduling |
+| **Balanced** | 0.5 - 0.7 | Sales, general inquiries (default) |
+| **Creative** | 0.7 - 0.9 | Marketing, storytelling |
+| **Very Creative** | 0.9 - 1.0 | Entertainment, creative fields |
+
+<Tip>
+Start with **0.6** (Balanced) and adjust based on call quality. Lower if agent is too chatty, higher if responses feel robotic.
+</Tip>
+
+### Max Call Duration
+
+Automatically end calls after a set time.
+
+**Range:** 30 seconds - 30 minutes (1800 seconds)
+
+**Recommended Settings:**
+- **Quick info:** 2-3 minutes (120-180s)
+- **Appointments:** 5-7 minutes (300-420s)
+- **Support calls:** 10-15 minutes (600-900s)
+- **Sales:** 15-20 minutes (900-1200s)
+
+<Warning>
+Calls end gracefully with: "I need to end this call now. Please call back if you need more help. Goodbye!"
+</Warning>
+
+---
+
+## Testing Your Configuration
+
+After making changes:
+
+1. **Click "Test"** in agent header
+2. **Make a test call:**
+   - In-browser: Click "Call Now"
+   - From phone: Dial your agent's number
+3. **Check:**
+   - Does greeting sound right?
+   - Does agent know your business info?
+   - Are responses helpful and accurate?
+   - Is voice quality clear?
+
+### Iterating
+
+Configuration is iterative:
+
+1. **Test** → Find issues
+2. **Adjust** instructions, creativity, or voice
+3. **Test again** → Verify improvements
+4. **Repeat** until satisfied
+
+<Tip>
+Make one change at a time so you know what improves (or worsens) performance.
+</Tip>
+
+---
+
+## Common Issues & Solutions
+
+<AccordionGroup>
+  <Accordion title="Agent gives incorrect information">
+    **Solutions:**
+    - Add specific facts to Voice Instructions
+    - Upload a knowledge base document with correct info
+    - Lower creativity/temperature for more factual responses
+  </Accordion>
+  
+  <Accordion title="Agent is too chatty or too brief">
+    **Solutions:**
+    - Adjust creativity/temperature
+    - Add explicit instructions: "Keep responses under 30 seconds" or "Provide detailed explanations"
+  </Accordion>
+  
+  <Accordion title="Agent doesn't handle edge cases">
+    **Solutions:**
+    - Add scenarios to Voice Instructions:
+      ```
+      If someone asks about [edge case], respond with [specific answer]
+      ```
+  </Accordion>
+  
+  <Accordion title="Calls drop unexpectedly">
+    **Solutions:**
+    - Increase Max Call Duration
+    - Check if agent is hitting the limit (view call logs)
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="View Call Logs" icon="list" href="/call-management">
+    Listen to calls and see how your agent performs
+  </Card>
+  
+  <Card title="Add Knowledge" icon="book" href="/knowledge-base">
+    Upload documents for smarter responses
+  </Card>
+  
+  <Card title="Connect Actions" icon="plug" href="/actions">
+    Automate workflows with integrations
+  </Card>
+  
+  <Card title="Manage Numbers" icon="phone" href="/phone-numbers">
+    Purchase and assign more numbers
+  </Card>
+</CardGroup>
