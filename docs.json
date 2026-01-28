@@ -20,7 +20,8 @@
               "agent-configuration",
               "voice-selection",
               "phone-numbers",
-              "knowledge-base"
+              "knowledge-base",
+              "actions"
             ]
           },
           {

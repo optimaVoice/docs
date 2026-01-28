@@ -1,0 +1,444 @@
+---
+title: "Actions & Integrations"
+description: "Connect your agent to external tools and automate workflows"
+---
+
+## Overview
+
+Actions let your agents do more than talk - they can book appointments, send emails, create tickets, update databases, and trigger workflows automatically during calls.
+
+**Available integrations:**
+- Google Calendar (appointments)
+- Gmail (send confirmations)
+- Slack (team notifications)
+- HubSpot (CRM updates)
+- Salesforce (lead creation)
+- 100+ more apps
+
+---
+
+## How Actions Work
+
+1. **Connect:** Authorize Optima Voice to access your account (OAuth)
+2. **Configure:** Set up which actions your agent can perform
+3. **Trigger:** Agent automatically performs actions during calls
+4. **Verify:** Check action results in call logs
+
+**Example flow:**
+1. Customer calls and requests appointment
+2. Agent collects date/time preference
+3. Agent checks Google Calendar for availability
+4. Agent books appointment automatically
+5. Agent confirms booking to customer
+6. Agent sends confirmation email via Gmail
+
+---
+
+## Browsing Available Actions
+
+### Access Actions Page
+
+1. Go to **Actions** in sidebar
+2. You'll see two tabs:
+   - **Available Apps:** Browse and connect new integrations
+   - **Connected:** View and manage active connections
+
+### Search & Filter
+
+**Search bar:**
+- Type app name (e.g., "Gmail," "Slack," "HubSpot")
+- Search by capability (e.g., "email," "calendar," "CRM")
+
+**Filter by category:**
+- All
+- Communication (email, chat, SMS)
+- Productivity (calendars, notes, tasks)
+- CRM & Sales
+- Marketing
+- Developer Tools
+- And more
+
+<Tip>
+Use search to find exactly what you need. Example: Search "email" to find Gmail, Outlook, SendGrid, etc.
+</Tip>
+
+---
+
+## Connecting an Integration
+
+### Step 1: Find the App
+
+1. Browse or search for the app you want
+2. Click the app card to view details:
+   - Description of what it does
+   - List of available actions
+   - Auth requirements
+
+### Step 2: Connect Your Account
+
+1. Click **"Connect"** button
+2. OAuth authorization popup opens
+3. Sign in to your account (if not already)
+4. Review permissions requested
+5. Click **"Allow"** or **"Authorize"**
+
+<Note>
+You're redirected to the app's official login page. Optima Voice never sees your password - all authentication uses secure OAuth standards.
+</Note>
+
+### Step 3: Confirmation
+
+After authorization:
+- Popup closes automatically
+- Success message appears
+- App moves to "Connected" tab
+- Agent can now use this integration
+
+---
+
+## Managing Connected Actions
+
+### View Connected Apps
+
+1. Go to Actions page
+2. Click **"Connected"** tab
+3. See all active integrations:
+   - App name and icon
+   - Connection status
+   - Connected account (email)
+   - Actions available
+
+### Disconnect an Integration
+
+To revoke access:
+
+1. Find the app in "Connected" tab
+2. Click **"Disconnect"** button
+3. Confirm disconnection
+
+<Warning>
+Disconnecting immediately stops your agents from using this integration. Active calls may fail if they're mid-action.
+</Warning>
+
+### Multiple Accounts
+
+Some apps allow multiple account connections:
+
+**Example:** Connect both:
+- work@company.com (for business appointments)
+- support@company.com (for support tickets)
+
+Agents will prompt which account to use, or you can configure default in agent settings.
+
+---
+
+## Configuring Agent Actions
+
+After connecting an app, assign actions to specific agents:
+
+### Step 1: Go to Agent Settings
+
+1. Navigate to your agent's configuration page
+2. Find **"Actions & Integrations"** card
+
+### Step 2: Select Actions
+
+1. Click **"Add Action"**
+2. Choose connected app
+3. Select specific actions to enable:
+   - ✅ Book appointment
+   - ✅ Send confirmation email
+   - ❌ Delete events (leave disabled for safety)
+4. Click **"Save"**
+
+### Step 3: Configure Triggers
+
+Tell your agent when to use each action:
+
+**In Voice Instructions, add:**
+```
+When a customer wants to book an appointment:
+1. Check their preferred date and time
+2. Search Google Calendar for availability
+3. If slot is available, book the appointment
+4. Confirm booking details to customer
+5. Send confirmation email to their address
+
+When a customer needs help:
+1. Create a support ticket in HubSpot
+2. Collect: name, email, issue description
+3. Notify #support channel in Slack
+```
+
+<Tip>
+Be explicit about when to use actions. Agents won't guess - they follow your instructions exactly.
+</Tip>
+
+---
+
+## Popular Use Cases
+
+### Appointment Booking (Google Calendar)
+
+**Setup:**
+1. Connect Google Calendar
+2. Enable "Create Event" action
+3. Add to agent instructions:
+   ```
+   For appointments: check calendar availability, book if free,
+   confirm details, send confirmation email
+   ```
+
+**Customer experience:**
+- Customer: "I'd like to book a cleaning for Thursday at 2 PM"
+- Agent: *checks calendar* "Thursday at 2 PM is available. Booking now..."
+- Agent: *creates event* "Your appointment is confirmed for Thursday, March 15 at 2 PM. You'll receive a confirmation email shortly."
+
+---
+
+### Lead Capture (CRM Integration)
+
+**Setup:**
+1. Connect HubSpot or Salesforce
+2. Enable "Create Contact" and "Create Deal" actions
+3. Add to instructions:
+   ```
+   When someone shows interest in our product:
+   1. Collect: name, email, company, phone
+   2. Create contact in CRM
+   3. Create deal with "New Lead" status
+   4. Notify sales team via Slack
+   ```
+
+**Customer experience:**
+- Customer: "I'm interested in your Enterprise plan"
+- Agent: "Great! Let me collect some information..."
+- Agent: *creates CRM contact* "I've forwarded your information to our sales team. Expect a call within 24 hours."
+
+---
+
+### Support Ticket Creation
+
+**Setup:**
+1. Connect ticketing system (Zendesk, Freshdesk)
+2. Enable "Create Ticket" action
+3. Add to instructions:
+   ```
+   For support requests:
+   1. Collect issue description and customer contact
+   2. Create ticket with priority based on urgency
+   3. Provide ticket number to customer
+   4. Notify support team
+   ```
+
+---
+
+### Email Confirmations (Gmail)
+
+**Setup:**
+1. Connect Gmail
+2. Enable "Send Email" action
+3. Add to instructions:
+   ```
+   After booking appointment or taking order:
+   1. Send confirmation email with details
+   2. Include: date, time, location, confirmation number
+   ```
+
+---
+
+## Action Security & Permissions
+
+### What Permissions Are Needed?
+
+Each integration requests specific permissions:
+
+**Google Calendar:**
+- View calendar events
+- Create new events
+- Edit events you created
+
+**Gmail:**
+- Send emails on your behalf
+- View sent emails
+
+**Slack:**
+- Post messages to channels
+- Send direct messages
+
+<Note>
+Optima Voice only requests minimal permissions needed for functionality. We never request permissions to delete data or access unrelated information.
+</Note>
+
+### Revoking Access
+
+You can revoke access anytime:
+
+1. **In Optima Voice:** Disconnect the integration
+2. **In the app:** Go to app's "Connected Apps" settings and revoke Optima Voice access
+
+Both methods immediately stop data access.
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Connection fails during OAuth">
+    **Possible causes:**
+    - Popup blocked by browser
+    - Account doesn't have admin permissions
+    - App's OAuth service is down
+    
+    **Solutions:**
+    - Allow popups for app.optima-voice.com
+    - Use admin account or request admin to connect
+    - Try again in a few minutes
+  </Accordion>
+  
+  <Accordion title="Agent isn't performing actions">
+    **Possible causes:**
+    - Action not enabled for this agent
+    - Missing instructions on when to use action
+    - Permission error
+    
+    **Solutions:**
+    - Check agent Actions card - is action enabled?
+    - Add explicit instructions for when to trigger action
+    - Reconnect the integration to refresh permissions
+  </Accordion>
+  
+  <Accordion title="Action fails during call">
+    **Possible causes:**
+    - Connected account lacks permissions (read-only)
+    - Rate limit hit (too many actions too fast)
+    - Invalid data provided
+    
+    **Solutions:**
+    - Use account with write permissions
+    - Add delays between actions in instructions
+    - Validate data before triggering action
+  </Accordion>
+  
+  <Accordion title="Which account is being used?">
+    **Possible causes:**
+    - Multiple accounts connected for same app
+    - Agent doesn't specify account
+    
+    **Solutions:**
+    - Check "Connected" tab for account email
+    - Disconnect extra accounts if not needed
+    - Specify in instructions: "Use work@company.com calendar"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Best Practices
+
+### Start Small
+
+✅ **DO:**
+- Connect one integration at a time
+- Test with simple actions first (e.g., send email)
+- Gradually add more complex workflows
+
+❌ **DON'T:**
+- Connect 10 apps at once without testing
+- Enable all actions immediately
+- Skip testing in development
+
+### Be Explicit in Instructions
+
+**Good:**
+```
+When customer requests appointment:
+1. Ask for preferred date and time
+2. Check Google Calendar for availability
+3. If available: create event, confirm to customer
+4. If unavailable: offer next available slot
+5. Send confirmation email with event details
+```
+
+**Bad:**
+```
+Handle appointment requests.
+```
+
+### Test Actions Separately
+
+Before live deployment:
+1. Call your agent
+2. Trigger each action manually
+3. Verify results in connected app
+4. Check for errors in call logs
+
+### Monitor Action Usage
+
+Regularly check:
+- **Call logs:** Are actions completing successfully?
+- **Connected app:** Are records correct?
+- **Error rates:** High failure rates? Investigate.
+
+---
+
+## Limitations
+
+### Rate Limits
+
+Each integrated app has rate limits:
+- **Google Calendar:** ~1,000 requests/day
+- **Gmail:** ~500 emails/day
+- **Slack:** ~1 message/second
+
+**High-volume use cases:** Contact support for enterprise limits.
+
+### Action Complexity
+
+Agents can handle:
+- ✅ Single-step actions (send email, create event)
+- ✅ 2-3 step workflows (check → create → confirm)
+- ❌ Complex multi-app workflows (requires custom development)
+
+### Data Validation
+
+Agents validate data before actions:
+- Email addresses must be valid
+- Dates must be future (not past)
+- Required fields must be filled
+
+**Invalid data = action fails gracefully** with error message to customer.
+
+---
+
+## Coming Soon
+
+We're adding:
+- Custom webhooks (trigger any HTTP endpoint)
+- Zapier integration (access 5,000+ apps)
+- Action templates (pre-built workflows)
+- Action analytics (success rates, timing)
+
+Request features: support@optima-voice.com
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Test Actions" icon="flask" href="/getting-started#step-7-make-a-test-call">
+    Call your agent and trigger actions in test mode
+  </Card>
+  
+  <Card title="View Call Logs" icon="list" href="/call-management">
+    See action results and troubleshoot failures
+  </Card>
+  
+  <Card title="Configure Agents" icon="sliders" href="/agent-configuration">
+    Set up when agents should perform actions
+  </Card>
+  
+  <Card title="Browse Marketplace" icon="store" href="/actions">
+    Connect more apps and integrations
+  </Card>
+</CardGroup>
