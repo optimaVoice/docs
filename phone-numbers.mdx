@@ -1,0 +1,412 @@
+---
+title: "Phone Numbers"
+description: "Purchase, manage, and assign phone numbers to your AI agents"
+---
+
+## Overview
+
+Phone numbers are how customers reach your AI agents. Optima Voice makes it easy to purchase new numbers or bring your existing ones.
+
+**Two options:**
+1. **Purchase from Telnyx** (recommended) - Instant provisioning, $1-5/month
+2. **Manual Entry** - Use your existing business number
+
+---
+
+## Purchasing a Number (Recommended)
+
+### Step 1: Open Add Number Drawer
+
+1. Navigate to **Phone Numbers** in the sidebar
+2. Click **"Add Number"** button
+3. Select the **"Purchase from Telnyx"** tab
+
+### Step 2: Search for Numbers
+
+**Choose your country:**
+- Select from 75+ supported countries
+- Popular: United States, Canada, United Kingdom, Australia
+- Each country has different pricing ($1-5/month typically)
+
+**Optional: Filter by area code**
+- Leave blank to see all available numbers
+- Enter specific area code for local presence
+  - Example: "212" for New York City
+  - Example: "415" for San Francisco
+  - Example: "020" for London
+
+**Click "Search"**
+
+### Step 3: Browse Results
+
+You'll see up to 20 available numbers:
+
+```
++1 (555) 123-4567  |  Local  |  $2.00/month  |  [Purchase]
++1 (555) 234-5678  |  Local  |  $2.00/month  |  [Purchase]
++1 (555) 345-6789  |  Toll-Free | $5.00/month | [Purchase]
+```
+
+**Number types:**
+- **Local:** Standard area code numbers
+- **Toll-Free:** 800, 888, 877, etc. (higher cost, professional appearance)
+
+<Tip>
+**Local numbers** are better for regional businesses. **Toll-free** numbers work well for national companies and add credibility.
+</Tip>
+
+### Step 4: Purchase & Assign
+
+1. Click **"Purchase"** on your preferred number
+2. Confirm purchase (charges immediately)
+3. **Assign to Agent** dialog appears
+4. Select which agent should receive calls to this number
+5. Click **"Assign"**
+
+**Done!** Your number is live immediately.
+
+---
+
+## Manual Entry (Existing Numbers)
+
+Already have a business number? Forward it to Optima Voice.
+
+### Step 1: Enter Number Details
+
+1. Click **"Add Number"** button
+2. Select **"Manual Entry"** tab
+3. Fill in:
+   - **Name:** Identifier (e.g., "Main Reception Line")
+   - **Phone Number:** Your existing number (format: +1234567890)
+   - **Agent:** Which agent handles this number
+
+### Step 2: Configure Outbound (Optional)
+
+If your agent needs to make outbound calls:
+
+<AccordionGroup>
+  <Accordion title="Outbound Configuration (Advanced)">
+    Enable outbound calling to let your agent initiate calls:
+    
+    **Required fields:**
+    - **Outbound Address:** Your SIP provider's address
+    - **Auth Username:** SIP account username
+    - **Auth Password:** SIP account password
+    
+    **Optional settings:**
+    - **Transport:** AUTO (recommended), UDP, TCP, TLS
+    - **Media Encryption:** DISABLE (default), SRTP
+    - **Krisp Noise Cancellation:** On/Off
+    
+    <Note>
+    Most users don't need outbound. This is for advanced call center setups.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+### Step 3: Set Up Call Forwarding
+
+After adding your number to Optima Voice:
+
+1. **We'll provide SIP credentials** (displayed after setup)
+2. **Configure your carrier** to forward calls to our SIP address
+3. **Test the connection** by calling your number
+
+<Warning>
+Manual setup requires technical knowledge of SIP/VoIP. Most users prefer purchasing numbers directly through Optima Voice for instant setup.
+</Warning>
+
+---
+
+## Managing Phone Numbers
+
+### Assigning to Agents
+
+Each number can be assigned to one agent at a time.
+
+**To assign:**
+1. Find the number in your Phone Numbers list
+2. Click **"Assign to Agent"**
+3. Select agent from dropdown
+4. Click **"Assign"**
+
+**To reassign:**
+1. Click **"Reassign"** on the number
+2. Select different agent
+3. Click **"Confirm"**
+4. Previous agent stops receiving calls immediately
+5. New agent starts receiving calls
+
+<Note>
+Reassigning is instant. Active calls continue with the old agent, but new calls route to the newly assigned agent.
+</Note>
+
+### Unassigning Numbers
+
+Remove an agent from a number without deleting it:
+
+1. Click on the phone number row
+2. Click **"Unassign"**
+3. Confirm
+
+**Result:** Number stays in your account but doesn't route to any agent. Callers hear a generic message.
+
+<Warning>
+Unassigned numbers still incur monthly charges. Delete them if you don't plan to use them.
+</Warning>
+
+### Deleting Numbers
+
+**Purchased numbers:**
+1. Click **"Delete"** on the number row
+2. Confirm deletion
+3. Number is released back to Telnyx
+4. Monthly charges stop at end of billing cycle
+
+**Manually entered numbers:**
+1. Click **"Delete"**
+2. Confirm
+3. Number is removed from Optima Voice
+4. Your original carrier still has the number (set up forwarding elsewhere)
+
+<Warning>
+**Deletion is permanent.** If you delete a purchased number, you cannot guarantee getting the same number back. Someone else might claim it.
+</Warning>
+
+---
+
+## Number Status & Health
+
+Each number displays its status:
+
+| Status | Meaning | Action |
+|--------|---------|--------|
+| ✅ **Active** | Assigned to agent, receiving calls | None |
+| ⚠️ **Unassigned** | No agent assigned | Assign to agent |
+| 🔴 **Error** | Configuration issue | Check settings |
+| 🔄 **Provisioning** | Being set up (new purchase) | Wait 1-2 minutes |
+
+---
+
+## Testing Your Numbers
+
+After purchasing or configuring:
+
+### Quick Test
+
+1. Call the number from your phone
+2. Verify:
+   - ✅ Call connects within 2-3 seconds
+   - ✅ Agent greeting plays
+   - ✅ Agent responds to questions
+   - ✅ Audio quality is clear (no static, echoes)
+
+### Troubleshooting Call Issues
+
+<AccordionGroup>
+  <Accordion title="Call doesn't connect">
+    **Possible causes:**
+    - Number not assigned to agent
+    - Agent is not configured (missing voice, instructions)
+    - Provisioning still in progress (wait 2 minutes after purchase)
+    
+    **Solutions:**
+    - Check Phone Numbers page - is number assigned?
+    - Check agent settings - is everything configured?
+    - Try again in 2-3 minutes
+  </Accordion>
+  
+  <Accordion title="Audio quality is poor">
+    **Possible causes:**
+    - Network congestion
+    - Low bandwidth
+    - Krisp noise cancellation off
+    
+    **Solutions:**
+    - Enable Krisp Noise Cancellation in number settings
+    - Check your internet connection (agents need 1+ Mbps)
+    - Try calling from different location/network
+  </Accordion>
+  
+  <Accordion title="Agent doesn't respond">
+    **Possible causes:**
+    - Agent instructions are empty/too short
+    - Voice model not selected
+    - Backend service issue
+    
+    **Solutions:**
+    - Check agent Voice Instructions (minimum 50 characters)
+    - Verify voice is selected in agent settings
+    - Contact support if issue persists
+  </Accordion>
+  
+  <Accordion title="Calls drop after X seconds">
+    **Possible causes:**
+    - Max Call Duration limit reached
+    - Agent explicitly ended call
+    
+    **Solutions:**
+    - Check agent Advanced Settings → Max Call Duration
+    - Review call transcript to see if agent ended it intentionally
+    - Increase Max Call Duration if needed
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Billing & Costs
+
+### Purchase Costs
+
+Numbers are billed monthly:
+
+| Type | Price Range | Billing |
+|------|-------------|---------|
+| **Local (US)** | $1.00 - $2.00/month | Monthly subscription |
+| **Local (International)** | $2.00 - $5.00/month | Varies by country |
+| **Toll-Free (US)** | $5.00/month | Monthly subscription |
+
+**Included:**
+- Unlimited inbound calls
+- Unlimited minutes
+- HD voice quality
+- Call recording & transcripts
+
+**Not included:**
+- Outbound calls (requires separate SIP provider)
+- International forwarding (extra fees may apply)
+
+### Cancellation
+
+Cancel anytime:
+1. Delete the phone number
+2. Charges stop at end of current billing cycle
+3. No cancellation fees
+
+<Tip>
+Keep numbers you might use later. At $1-2/month, it's cheaper than losing a good number and having to search again.
+</Tip>
+
+---
+
+## Best Practices
+
+### Number Selection
+
+✅ **DO:**
+- **Choose memorable numbers** when possible (repeating digits, patterns)
+- **Match area codes** to your business location for local credibility
+- **Use toll-free** for national brands or premium services
+- **Purchase multiple** if you have multiple agents (reception, sales, support)
+
+❌ **DON'T:**
+- Use vanity numbers with letters (hard to remember: 1-800-FLOWERS vs 1-800-356-9377)
+- Buy numbers in random cities (looks unprofessional if customer is in New York and sees Los Angeles number)
+- Reuse personal mobile numbers (keep business and personal separate)
+
+### Assignment Strategy
+
+**Single Agent:**
+- Purchase 1 number
+- Assign to your only agent
+- Simple setup, one point of contact
+
+**Multiple Agents:**
+- Purchase 1 number per department:
+  - +1 (555) 100-0001 → Sales Agent
+  - +1 (555) 100-0002 → Support Agent
+  - +1 (555) 100-0003 → Billing Agent
+- Advertise different numbers for different purposes
+
+**High Volume:**
+- Purchase multiple numbers for the same agent
+- Distribute to different marketing channels
+- Track which channel drives calls (see call logs)
+
+---
+
+## Number Portability
+
+### Bringing Your Existing Number
+
+Want to transfer your current business number to Optima Voice?
+
+**Process:**
+1. **Contact Support:** Email support@optima-voice.com with:
+   - Current phone number
+   - Current carrier name
+   - Account number with current carrier
+2. **Submit Port Request:** We'll handle the paperwork
+3. **Wait for Approval:** 7-14 business days (carrier dependent)
+4. **Number Transfers:** Seamless cutover, no downtime
+
+<Note>
+**Port-in fees:** $15-25 per number (one-time). Monthly billing remains $1-5/month.
+</Note>
+
+### Taking Your Number Elsewhere
+
+Want to leave Optima Voice but keep your number?
+
+**Process:**
+1. **Request Port-Out:** Contact support@optima-voice.com
+2. **We'll Provide:** Account details, port authorization code
+3. **Submit to New Carrier:** They'll handle the transfer
+4. **Number Transfers:** 7-14 business days
+
+<Warning>
+Don't delete the number in Optima Voice until the port completes. Deletion makes the number unportable.
+</Warning>
+
+---
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="Can I have multiple numbers for one agent?">
+    Yes! Assign as many numbers as you want to a single agent. Useful for tracking marketing campaigns or providing multiple local numbers.
+  </Accordion>
+  
+  <Accordion title="What happens if I don't assign a number to an agent?">
+    Callers hear a generic message: "This number is not configured. Please contact the business directly." You still pay monthly fees.
+  </Accordion>
+  
+  <Accordion title="Can I transfer a number between agents instantly?">
+    Yes. Reassignment takes effect immediately. Active calls continue with the old agent; new calls go to the new agent.
+  </Accordion>
+  
+  <Accordion title="Do I own the number I purchase?">
+    You lease the number from Telnyx. As long as you pay monthly fees, it's yours. If you cancel, the number returns to the pool.
+  </Accordion>
+  
+  <Accordion title="Can I get a specific number I found elsewhere?">
+    Maybe. If it's available in our Telnyx inventory, yes. Search for it. If not found, it's already claimed.
+  </Accordion>
+  
+  <Accordion title="What's the difference between Local and Toll-Free?">
+    - **Local:** Tied to geographic area code (e.g., 212 for NYC). Cheaper ($1-2/month).
+    - **Toll-Free:** 800/888/877 numbers. National reach. More expensive ($5/month). Professional appearance.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Test Your Agent" icon="flask" href="/getting-started#step-7-make-a-test-call">
+    Call your number and verify everything works
+  </Card>
+  
+  <Card title="View Call Logs" icon="list" href="/call-management">
+    See every call your agents handle
+  </Card>
+  
+  <Card title="Configure Agents" icon="sliders" href="/agent-configuration">
+    Fine-tune agent behavior and settings
+  </Card>
+  
+  <Card title="Add Knowledge" icon="book" href="/knowledge-base">
+    Upload documents for smarter responses
+  </Card>
+</CardGroup>
