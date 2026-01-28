@@ -1,33 +1,45 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API Reference"
+description: "Programmatic access to Optima Voice"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Coming Soon
 
-## Welcome
+Our REST API is currently in development. It will allow you to:
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+- Create and manage agents programmatically
+- Retrieve call logs and recordings
+- Configure integrations
+- Manage phone numbers
+- Access analytics
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+**Expected Release:** Q1 2026
 
-## Authentication
+---
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+## Early Access
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+Interested in API access for your use case?
+
+Contact us at [api@optima-voice.com](mailto:api@optima-voice.com) to:
+- Request early access
+- Share your use case
+- Get notified when API launches
+
+---
+
+## Webhooks (Available Now)
+
+While the full API is in development, webhooks are available for real-time event notifications:
+
+**Available Events:**
+- `call.started` - Call begins
+- `call.completed` - Call ends successfully
+- `call.failed` - Call encounters error
+- `action.triggered` - Integration action performed
+
+**Configure webhooks:** Settings → Integrations → Webhooks
+
+---
+
+For questions, contact [support@optima-voice.com](mailto:support@optima-voice.com)
