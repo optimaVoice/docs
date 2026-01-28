@@ -1,44 +1,44 @@
-# Mintlify Starter Kit
+# Optima Voice Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+Official user documentation for Optima Voice - Professional AI call agents for small and medium businesses.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Documentation Site
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+Live at: [https://optimavoice.mintlify.app](https://optimavoice.mintlify.app)
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+## Local Development
 
-## Development
+Install the Mintlify CLI:
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
+```bash
+npm i -g mintlify
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+Run the documentation website locally:
 
+```bash
+cd path/to/docs
+mintlify dev
 ```
-mint dev
-```
 
-View your local preview at `http://localhost:3000`.
+The documentation will be available at `http://localhost:3000`.
 
-## Publishing changes
+## Repository Structure
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+- `/` - User guides (Getting Started, Agent Configuration, etc.)
+- `/api-reference/` - API documentation (coming soon)
+- `docs.json` - Navigation and site configuration
 
-## Need help?
+## Contributing
 
-### Troubleshooting
+Internal team only. For updates:
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+1. Create a branch: `git checkout -b update-docs`
+2. Make changes
+3. Test locally with `mintlify dev`
+4. Commit and push
+5. Changes deploy automatically to Mintlify
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
-- [Mintlify community](https://mintlify.com/community)
+## Support
+
+Questions? Contact support@optima-voice.com
