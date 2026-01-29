@@ -1,0 +1,279 @@
+---
+title: "Telnyx SIP Trunk Setup"
+description: "Connect your existing Telnyx phone numbers to Optima Voice"
+---
+
+## Overview
+
+Already have phone numbers with Telnyx? Connect them to Optima Voice using SIP trunks for full control over your telephony infrastructure.
+
+**What you'll need:**
+- Active Telnyx account
+- Telnyx phone number(s)
+- Basic SIP/VoIP knowledge
+
+**Time to complete:** 15-20 minutes
+
+---
+
+## Step 1: Get SIP Credentials from Optima Voice
+
+1. Log into Optima Voice
+2. Navigate to **Phone Numbers**
+3. Click **"Add Number"** → **"Manual Entry"** tab
+4. Fill in basic details:
+   - **Name:** "Telnyx - Main Line" (or your identifier)
+   - **Phone Number:** Your Telnyx number (format: +1234567890)
+   - **Agent:** Select which agent handles calls
+5. Enable **"Configure Outbound"** if needed
+6. Click **"Save"**
+
+**Optima Voice will provide:**
+- SIP URI (e.g., `sip:username@optima-voice.com`)
+- Username
+- Password
+
+<Note>
+Copy these credentials - you'll need them for Telnyx configuration.
+</Note>
+
+---
+
+## Step 2: Create SIP Connection in Telnyx
+
+1. Log into [Telnyx Portal](https://portal.telnyx.com)
+2. Navigate to **Voice** → **SIP Connections**
+3. Click **"Create SIP Connection"**
+4. Enter connection name: "Optima Voice Integration"
+5. Click **"Create"**
+
+---
+
+## Step 3: Configure Inbound Settings
+
+### General Settings
+
+1. In your new SIP Connection, go to **"General"** tab
+2. Set:
+   - **Connection Name:** Optima Voice Integration
+   - **ANI Override:** None
+   - **CNAM Listing:** Disabled
+
+### Credentials
+
+1. Go to **"Credentials"** tab
+2. Click **"Add Credential"**
+3. Enter:
+   - **Username:** From Optima Voice SIP credentials
+   - **Password:** From Optima Voice SIP credentials
+4. Click **"Save"**
+
+### Outbound Voice Profile
+
+1. Go to **"Outbound"** tab
+2. Set:
+   - **Outbound Voice Profile:** Default
+   - **Tech Prefix:** Leave blank
+   - **Channel Limit:** 10 (or your needs)
+
+### Inbound
+
+1. Go to **"Inbound"** tab
+2. Set **"Send SIP INVITE to"**:
+   - **Destination:** The SIP URI from Optima Voice
+   - **Protocol:** UDP (or match Optima Voice settings)
+   - **Port:** 5060
+
+Example:
+```
+sip:username@sip.optima-voice.com:5060
+```
+
+3. **Codecs:** Enable G.711 (both μ-law and A-law)
+4. **DTMF:** RFC 2833
+5. Click **"Save"**
+
+---
+
+## Step 4: Assign Numbers
+
+1. In Telnyx Portal, go to **Numbers** → **My Numbers**
+2. Find the number(s) you want to forward
+3. Click on each number
+4. Under **"Voice Settings"**:
+   - **Connection:** Select "Optima Voice Integration"
+   - **Connection Type:** SIP Connection
+5. Click **"Save"**
+
+Repeat for each number you want to connect.
+
+---
+
+## Step 5: Test the Connection
+
+### Make a Test Call
+
+1. Call your Telnyx number from any phone
+2. Verify:
+   - ✅ Call connects within 2-3 seconds
+   - ✅ Optima Voice agent answers
+   - ✅ Agent greeting plays correctly
+   - ✅ Audio is clear (no static, echo, or delay)
+
+### Check Call Logs
+
+1. In Optima Voice, go to **Call Management**
+2. Find your test call
+3. Verify:
+   - Correct caller ID
+   - Full transcript captured
+   - Recording available
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Calls don't reach Optima Voice">
+    **Check:**
+    - Is the number assigned to the correct SIP Connection in Telnyx?
+    - Is the SIP URI correct (copy-paste from Optima Voice)?
+    - Are credentials entered exactly as provided?
+    
+    **Try:**
+    - Check Telnyx CDR (Call Detail Records) - do calls leave Telnyx?
+    - Verify port 5060 is open on both ends
+    - Try TCP instead of UDP
+  </Accordion>
+  
+  <Accordion title="One-way audio (can't hear caller or agent)">
+    **Cause:** Usually a codec mismatch or firewall issue.
+    
+    **Solutions:**
+    - Ensure G.711 (μ-law and A-law) are enabled on both sides
+    - Disable unnecessary codecs (Opus, G.729)
+    - Check firewall rules allow RTP traffic (ports 10000-20000)
+  </Accordion>
+  
+  <Accordion title="Calls drop after few seconds">
+    **Check:**
+    - Session timers in Telnyx (set to 1800 seconds or higher)
+    - NAT keepalive enabled
+    - No aggressive SIP timeout on firewall
+  </Accordion>
+  
+  <Accordion title="Wrong caller ID displayed">
+    **In Telnyx:**
+    - Go to SIP Connection → General
+    - Check ANI Override (should be "None" or correct number)
+    
+    **In Optima Voice:**
+    - Verify number is entered correctly (E.164 format: +1234567890)
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Advanced Configuration
+
+### Enable Encryption (TLS/SRTP)
+
+For secure voice traffic:
+
+**In Telnyx:**
+1. SIP Connection → Inbound tab
+2. Change **"Send SIP INVITE to"** protocol to **TLS**
+3. Port: 5061
+
+**In Optima Voice:**
+1. Phone Numbers → Edit number
+2. Outbound Settings → Transport: **TLS**
+3. Media Encryption: **SRTP**
+4. Save
+
+### Outbound Calling
+
+Allow agents to make outbound calls via Telnyx:
+
+**In Optima Voice:**
+1. Phone Numbers → Edit number
+2. Enable **"Configure Outbound"**
+3. Enter:
+   - **Outbound Address:** `sip.telnyx.com`
+   - **Auth Username:** Your Telnyx SIP username
+   - **Auth Password:** Your Telnyx SIP password
+4. Save
+
+**In Telnyx:**
+1. SIP Connection → Outbound tab
+2. Enable outbound calling
+3. Set caller ID to your Telnyx number
+4. Save
+
+### Failover Numbers
+
+Set up backup routing:
+
+**In Telnyx:**
+1. SIP Connection → Inbound tab
+2. Add secondary destination:
+   ```
+   Primary: sip:user@optima-voice.com
+   Failover: +12125551234 (your backup number)
+   ```
+3. Set failover timeout: 15 seconds
+
+---
+
+## Billing
+
+**Telnyx Charges:**
+- Monthly number rental: $1-5/month per number
+- Inbound calls: $0.005-0.01/min (varies by region)
+- Outbound calls (if enabled): Per-minute rates
+
+**Optima Voice Charges:**
+- Standard platform fee (no additional per-minute charges)
+- Call recording & transcription included
+
+<Note>
+You'll be billed by both Telnyx (for telephony) and Optima Voice (for AI agents). Most users find this setup cheaper than buying numbers through Optima Voice if you have high call volumes.
+</Note>
+
+---
+
+## Best Practices
+
+✅ **DO:**
+- Use TLS/SRTP for sensitive business calls
+- Set up failover routing for critical numbers
+- Monitor Telnyx CDRs and Optima Voice call logs
+- Test thoroughly before going live
+
+❌ **DON'T:**
+- Expose SIP credentials in code or public repositories
+- Use weak passwords
+- Forward personal mobile numbers (use dedicated business lines)
+- Skip testing - always verify audio quality and call flow
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Twilio Setup" icon="cloud" href="/sip-trunks/twilio-setup">
+    Connect Twilio numbers instead
+  </Card>
+  
+  <Card title="Test Your Agent" icon="flask" href="/getting-started#test-call">
+    Make a test call to verify everything works
+  </Card>
+  
+  <Card title="Advanced Settings" icon="sliders" href="/agent-configuration">
+    Configure agent behavior
+  </Card>
+  
+  <Card title="View Call Logs" icon="list" href="/call-management">
+    Monitor all calls in real-time
+  </Card>
+</CardGroup>

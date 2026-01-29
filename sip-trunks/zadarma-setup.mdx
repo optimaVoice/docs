@@ -1,0 +1,326 @@
+---
+title: "Zadarma SIP Trunk Setup"
+description: "Connect your Zadarma phone numbers (international) to Optima Voice"
+---
+
+## Overview
+
+Zadarma is a popular international VoIP provider with competitive rates for numbers in 100+ countries. Connect your Zadarma numbers to Optima Voice for global AI agent coverage.
+
+**What you'll need:**
+- Active Zadarma account
+- Zadarma phone number(s)
+- PBX/SIP feature enabled (free on most plans)
+- Basic SIP/VoIP knowledge
+
+**Time to complete:** 10-15 minutes
+
+---
+
+## Step 1: Get SIP Credentials from Optima Voice
+
+1. Log into Optima Voice
+2. Navigate to **Phone Numbers**
+3. Click **"Add Number"** → **"Manual Entry"** tab
+4. Fill in:
+   - **Name:** "Zadarma - UK Support" (your identifier)
+   - **Phone Number:** Your Zadarma number (E.164 format: +44xxxxxxxxxx)
+   - **Agent:** Select agent to handle calls
+5. Enable **"Configure Outbound"** if needed
+6. Click **"Save"**
+
+**Save these credentials:**
+- SIP URI (e.g., `sip:user@sip.optima-voice.com`)
+- Username
+- Password
+
+---
+
+## Step 2: Enable PBX in Zadarma
+
+1. Log into [Zadarma Control Panel](https://my.zadarma.com)
+2. Navigate to **PBX** (left sidebar)
+3. If not enabled:
+   - Click **"Enable PBX"**
+   - Confirm (it's free)
+4. Wait 1-2 minutes for activation
+
+---
+
+## Step 3: Create SIP User
+
+1. In PBX section, go to **"SIP Users"** tab
+2. Click **"Add SIP User"**
+3. Enter:
+   - **Extension:** 100 (or any 3-4 digit number)
+   - **Password:** Generate strong password
+   - **Name:** "Optima Voice Integration"
+4. Click **"Save"**
+
+<Note>
+This SIP user is for outbound calls FROM Optima Voice (if your agents make calls). Skip if you only need inbound.
+</Note>
+
+---
+
+## Step 4: Configure Call Forwarding
+
+### For Inbound Calls to Optima Voice
+
+1. In Zadarma PBX, go to **"Scenario"** tab
+2. Click **"Create Scenario"** or edit existing
+3. Add action: **"Forward to SIP"**
+4. Enter Optima Voice SIP URI:
+   ```
+   sip:username@sip.optima-voice.com
+   ```
+5. Set:
+   - **Timeout:** 60 seconds
+   - **Caller ID:** Original (pass through from caller)
+6. Click **"Save Scenario"**
+
+### Assign Scenario to Number
+
+1. Go to **"My Numbers"** tab
+2. Find your Zadarma number
+3. Under **"Incoming calls"**, select the scenario you created
+4. Click **"Save"**
+
+---
+
+## Step 5: Configure Outbound (Optional)
+
+For agents to make outbound calls via Zadarma:
+
+**In Optima Voice:**
+1. Phone Numbers → Edit your number
+2. Enable **"Configure Outbound"**
+3. Enter:
+   - **Outbound Address:** `sip.zadarma.com`
+   - **Auth Username:** Your Zadarma SIP user (extension@zadarma-account-id)
+     - Example: `100@123456` (extension 100, account ID 123456)
+   - **Auth Password:** SIP user password from Step 3
+4. **Transport:** UDP
+5. **Port:** 5060
+6. Save
+
+**Find your Zadarma Account ID:**
+- Zadarma Control Panel → Settings → Account Info
+- It's a 6-digit number (e.g., 123456)
+
+---
+
+## Step 6: Test the Connection
+
+### Inbound Test
+
+1. Call your Zadarma number from any phone
+2. Verify:
+   - ✅ Zadarma receives call (check Call History in Zadarma)
+   - ✅ Call forwards to Optima Voice
+   - ✅ Agent answers and greeting plays
+   - ✅ Audio is clear
+
+### Outbound Test (If Configured)
+
+1. In Optima Voice, trigger an outbound call from your agent
+2. Verify:
+   - ✅ Call initiates from Zadarma number
+   - ✅ Recipient sees your Zadarma caller ID
+   - ✅ Clear audio both ways
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Calls don't reach Optima Voice">
+    **Check:**
+    - Is PBX enabled in Zadarma?
+    - Is scenario assigned to the correct number?
+    - Is SIP URI correct (copy from Optima Voice exactly)?
+    
+    **Debug:**
+    - Check Zadarma **Call History** - does call show "Forwarded"?
+    - Look for error messages in Zadarma logs
+    - Try pinging the SIP URI from another SIP client
+  </Accordion>
+  
+  <Accordion title="One-way audio">
+    **Common causes:**
+    - Firewall blocking RTP packets
+    - Codec mismatch
+    - NAT issues
+    
+    **Solutions:**
+    - Ensure G.711 (PCMU/PCMA) codecs enabled
+    - Allow UDP ports 10000-20000 for RTP
+    - Disable unnecessary codecs (G.729, Opus) in Zadarma PBX settings
+  </Accordion>
+  
+  <Accordion title="Outbound calls fail">
+    **Check authentication:**
+    - Username format: `extension@account-id` (e.g., `100@123456`)
+    - Password matches SIP user in Zadarma
+    - Account ID is correct (6-digit number)
+    
+    **Check balance:**
+    - Zadarma account has sufficient funds for outbound calls
+  </Accordion>
+  
+  <Accordion title="International calls not working">
+    **Zadarma restrictions:**
+    - Some plans block certain countries
+    - Check **Tariffs** in Zadarma for allowed destinations
+    - Top up balance if needed
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Advanced Configuration
+
+### Codec Optimization
+
+For best call quality:
+
+**In Zadarma PBX:**
+1. Settings → SIP Settings
+2. **Codecs:**
+   - ✅ G.711 (PCMU) - Priority 1
+   - ✅ G.711 (PCMA) - Priority 2
+   - ❌ Disable G.729, GSM, Opus (lower quality, compatibility issues)
+3. **DTMF:** RFC 2833
+4. Save
+
+**In Optima Voice:**
+- Codecs auto-negotiate to G.711 for best quality
+
+### Call Recording
+
+Record calls in Zadarma (in addition to Optima Voice):
+
+1. Zadarma PBX → Settings
+2. **Call Recording:** Enable
+3. Recordings stored in Zadarma Control Panel → Call History
+4. Download as MP3
+
+<Note>
+You'll have recordings in BOTH Zadarma and Optima Voice. Optima Voice recordings include AI transcripts.
+</Note>
+
+### Multi-Region Numbers
+
+Zadarma offers numbers in 100+ countries:
+
+**Setup:**
+1. Purchase numbers in different countries (UK, DE, FR, etc.)
+2. Create one Optima Voice agent per region/language
+3. Forward each Zadarma number to a different agent
+4. Use Zadarma scenarios to route by language or time zone
+
+**Example:**
+- +44 (UK) → English support agent
+- +49 (Germany) → German support agent  
+- +33 (France) → French support agent
+
+---
+
+## Billing
+
+**Zadarma Charges:**
+- Number rental: $1-3/month (varies by country)
+- Inbound calls: FREE for most countries
+- Outbound calls: Per-minute rates (check Zadarma tariffs)
+- PBX features: FREE
+
+**Optima Voice Charges:**
+- Standard platform fee
+- No per-minute charges
+
+<Tip>
+Zadarma is one of the cheapest international VoIP providers. Great for businesses with global customers.
+</Tip>
+
+---
+
+## Regional Considerations
+
+### Europe (GDPR)
+
+If serving EU customers:
+- Enable call recording consent in agent greeting
+- Store recordings in EU data center (contact Optima Voice support)
+- Inform callers: "This call may be recorded for quality purposes"
+
+### Russia & CIS
+
+Zadarma is popular in Russia/CIS:
+- Russian numbers start with +7
+- Use Cyrillic-friendly agent names in Zadarma PBX
+- Consider Russian language support in agent instructions
+
+### Asia-Pacific
+
+For AU, NZ, SG numbers:
+- Zadarma has competitive rates
+- Check local regulations for call recording
+- Test latency (Zadarma routes through EU/US servers)
+
+---
+
+## Migration Tips
+
+### From Zadarma PBX to Optima Voice
+
+Already using Zadarma's built-in PBX? Switch to Optima Voice AI:
+
+**Process:**
+1. Keep Zadarma numbers (don't cancel)
+2. Disable Zadarma PBX auto-attendant
+3. Set up forwarding to Optima Voice (steps above)
+4. Test one number first, then migrate others
+
+**Benefits:**
+- Keep low Zadarma rates
+- Add AI capabilities
+- No number porting needed
+
+---
+
+## Best Practices
+
+✅ **DO:**
+- Use G.711 codecs for best quality
+- Enable call recording for compliance
+- Monitor Zadarma balance for outbound calls
+- Set up scenarios for different time zones
+- Test international routing before going live
+
+❌ **DON'T:**
+- Use weak SIP passwords (risk of toll fraud)
+- Forward emergency numbers (911, 112) to SIP
+- Ignore Zadarma security alerts
+- Mix personal and business numbers
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Telnyx Setup" icon="phone" href="/sip-trunks/telnyx-setup">
+    US-focused SIP provider
+  </Card>
+  
+  <Card title="Twilio Setup" icon="cloud" href="/sip-trunks/twilio-setup">
+    Enterprise SIP trunking
+  </Card>
+  
+  <Card title="Multi-Language Agents" icon="globe" href="/agent-configuration#language">
+    Configure agents for different languages
+  </Card>
+  
+  <Card title="Call Management" icon="list" href="/call-management">
+    Monitor global call activity
+  </Card>
+</CardGroup>
