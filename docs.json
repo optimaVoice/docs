@@ -24,6 +24,14 @@
               "actions",
               "call-management"
             ]
+          },
+          {
+            "group": "SIP Trunks",
+            "pages": [
+              "sip-trunks/telnyx-setup",
+              "sip-trunks/twilio-setup",
+              "sip-trunks/zadarma-setup"
+            ]
           }
         ]
       },
