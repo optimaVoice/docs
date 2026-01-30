@@ -3,43 +3,266 @@ title: "API Reference"
 description: "Programmatic access to Optima Voice"
 ---
 
-## Coming Soon
+## Overview
 
-Our REST API is currently in development. It will allow you to:
+The Optima Voice API provides comprehensive programmatic access to create and manage AI voice agents, handle phone numbers, retrieve conversation data, and integrate with external services.
 
-- Create and manage agents programmatically
-- Retrieve call logs and recordings
-- Configure integrations
-- Manage phone numbers
-- Access analytics
-
-**Expected Release:** Q1 2026
+**Base URL:** `https://api.optima-voice.com`
 
 ---
 
-## Early Access
+## Authentication
 
-Interested in API access for your use case?
+The API supports two authentication methods:
 
-Contact us at [api@optima-voice.com](mailto:api@optima-voice.com) to:
-- Request early access
-- Share your use case
-- Get notified when API launches
+### 1. Session Authentication (Recommended for Web Apps)
+
+Use WorkOS session tokens obtained through the authentication flow:
+
+```bash
+curl https://api.optima-voice.com/api/agents \
+  -H "Cookie: session=your_session_cookie"
+```
+
+### 2. API Key Authentication (Recommended for Server-to-Server)
+
+Create API keys in Settings → API Keys, then include in requests:
+
+```bash
+curl https://api.optima-voice.com/api/agents \
+  -H "Authorization: Bearer your_api_key"
+```
 
 ---
 
-## Webhooks (Available Now)
+## Available Endpoints
 
-While the full API is in development, webhooks are available for real-time event notifications:
+### Agent Management
+- **POST** `/api/agents` - Create a new agent
+- **GET** `/api/agents` - List all agents
+- **GET** `/api/agents/{id}` - Get agent details
+- **PATCH** `/api/agents/{id}` - Update agent configuration
+- **DELETE** `/api/agents/{id}` - Delete an agent
+- **POST** `/api/agents/{id}/token` - Generate LiveKit access token
 
-**Available Events:**
+### Conversations
+- **GET** `/api/conversations` - List conversations
+- **GET** `/api/conversations/{id}` - Get conversation details
+- **GET** `/api/conversations/{id}/audio` - Stream call audio
+- **GET** `/api/conversations/report` - Generate conversation analytics
+
+### Phone Numbers (Telnyx)
+- **GET** `/api/telnyx/search` - Search available phone numbers
+- **POST** `/api/telnyx/purchase` - Purchase a phone number
+- **GET** `/api/telnyx/pricing` - Get number pricing
+
+### SIP Trunks
+- **POST** `/api/sip-trunks` - Create SIP trunk
+- **GET** `/api/sip-trunks` - List SIP trunks
+- **PATCH** `/api/sip-trunks/{id}` - Update SIP trunk
+- **DELETE** `/api/sip-trunks/{id}` - Delete SIP trunk
+
+### Dispatch Rules (Call Routing)
+- **POST** `/api/dispatch-rules` - Create routing rule
+- **GET** `/api/dispatch-rules` - List routing rules
+- **PATCH** `/api/dispatch-rules/{id}` - Update rule
+- **DELETE** `/api/dispatch-rules/{id}` - Delete rule
+
+### Knowledge Base
+- **POST** `/api/knowledge/upload` - Upload file to knowledge base
+- **POST** `/api/knowledge/url` - Add URL to knowledge base
+- **POST** `/api/knowledge/text` - Add text to knowledge base
+- **GET** `/api/knowledge` - List knowledge items
+- **DELETE** `/api/knowledge/{id}` - Delete knowledge item
+- **POST** `/api/knowledge/folders` - Create folder
+- **GET** `/api/knowledge/folders` - List folders
+
+### Actions (Integrations via Composio)
+- **GET** `/api/actions/oauth` - Get OAuth connection URL
+- **GET** `/api/actions/callback` - OAuth callback handler
+- **GET** `/api/actions/connections` - List active connections
+- **GET** `/api/actions/available` - List available integrations
+- **POST** `/api/actions/execute` - Execute an action
+- **DELETE** `/api/actions/connections/{id}` - Disconnect integration
+
+### Organizations
+- **GET** `/api/organizations` - Get organization details
+- **PATCH** `/api/organizations` - Update organization
+- **GET** `/api/organizations/members` - List members
+- **POST** `/api/organizations/members` - Invite member
+- **DELETE** `/api/organizations/members/{id}` - Remove member
+
+### Billing
+- **GET** `/api/billing/subscription` - Get current subscription
+- **POST** `/api/billing/subscribe` - Create subscription
+- **POST** `/api/billing/upgrade` - Upgrade subscription
+- **POST** `/api/billing/downgrade` - Downgrade subscription
+- **POST** `/api/billing/cancel` - Cancel subscription
+- **POST** `/api/billing/checkout` - Create Stripe checkout session
+- **POST** `/api/billing/portal` - Create customer portal session
+
+### Statistics
+- **GET** `/api/stats/overview` - Get usage overview
+- **GET** `/api/stats/period` - Get stats for time period
+- **POST** `/api/stats/demo-data` - Generate demo data (dev only)
+
+### API Keys
+- **POST** `/api/api-keys` - Create API key
+- **GET** `/api/api-keys` - List API keys
+- **DELETE** `/api/api-keys/{id}` - Revoke API key
+
+### Voices
+- **GET** `/api/voices` - List available voices
+- **GET** `/api/voices/filters` - Get voice filters
+
+### Health & System
+- **GET** `/healthz` - Health check
+- **GET** `/readyz` - Readiness check
+- **GET** `/metrics` - System metrics
+
+---
+
+## Webhooks
+
+Webhooks are available for real-time event notifications. Configure in Settings → Integrations → Webhooks.
+
+### Available Events
 - `call.started` - Call begins
 - `call.completed` - Call ends successfully
 - `call.failed` - Call encounters error
 - `action.triggered` - Integration action performed
 
-**Configure webhooks:** Settings → Integrations → Webhooks
+### Webhook Security
+
+All webhooks include signature verification. Verify signatures using:
+
+```python
+import hmac
+import hashlib
+
+def verify_webhook(payload, signature, secret):
+    expected = hmac.new(
+        secret.encode(),
+        payload.encode(),
+        hashlib.sha256
+    ).hexdigest()
+    return hmac.compare_digest(expected, signature)
+```
 
 ---
 
-For questions, contact [support@optima-voice.com](mailto:support@optima-voice.com)
+## Rate Limits
+
+- **Free Plan:** 100 requests/minute
+- **Pro Plan:** 1000 requests/minute
+- **Enterprise:** Custom limits
+
+Rate limit headers:
+- `X-RateLimit-Limit` - Request limit
+- `X-RateLimit-Remaining` - Remaining requests
+- `X-RateLimit-Reset` - Reset timestamp
+
+---
+
+## Error Handling
+
+### Standard Error Response
+
+```json
+{
+  "detail": "Error message",
+  "code": "ERROR_CODE"
+}
+```
+
+### HTTP Status Codes
+- `200` - Success
+- `201` - Created
+- `400` - Bad Request
+- `401` - Unauthorized
+- `403` - Forbidden
+- `404` - Not Found
+- `422` - Validation Error
+- `429` - Rate Limit Exceeded
+- `500` - Internal Server Error
+
+---
+
+## Code Examples
+
+### Create an Agent
+
+```python
+import requests
+
+response = requests.post(
+    "https://api.optima-voice.com/api/agents",
+    headers={"Authorization": "Bearer your_api_key"},
+    json={
+        "name": "Customer Support Agent",
+        "voice": "alloy",
+        "instructions": "You are a helpful customer support agent.",
+        "first_message": "Hello! How can I help you today?"
+    }
+)
+
+agent = response.json()
+print(f"Created agent: {agent['id']}")
+```
+
+### List Conversations
+
+```javascript
+const response = await fetch(
+  "https://api.optima-voice.com/api/conversations",
+  {
+    headers: {
+      "Authorization": "Bearer your_api_key"
+    }
+  }
+);
+
+const conversations = await response.json();
+console.log(`Found ${conversations.length} conversations`);
+```
+
+### Purchase Phone Number
+
+```bash
+curl -X POST https://api.optima-voice.com/api/telnyx/purchase \
+  -H "Authorization: Bearer your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phone_number": "+1234567890",
+    "agent_id": "agent_abc123"
+  }'
+```
+
+---
+
+## SDKs & Libraries
+
+Official SDKs:
+- **Python:** `pip install optima-voice` (coming soon)
+- **Node.js:** `npm install @optima-voice/sdk` (coming soon)
+- **Go:** Coming soon
+
+For now, use standard HTTP clients with the REST API.
+
+---
+
+## Support
+
+Questions or issues?
+- **Documentation:** [docs.optima-voice.com](https://docs.optima-voice.com)
+- **Email:** [api@optima-voice.com](mailto:api@optima-voice.com)
+- **Discord:** [community.optima-voice.com](https://discord.gg/optima-voice)
+
+---
+
+## Changelog
+
+### 2026-01-30
+- ✅ API documentation published
+- ✅ All endpoints now publicly available
+- ✅ Webhook support active
