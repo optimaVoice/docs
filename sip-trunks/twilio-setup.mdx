@@ -1,0 +1,306 @@
+---
+title: "Twilio SIP Trunk Setup"
+description: "Connect your existing Twilio phone numbers to Optima Voice"
+---
+
+## Overview
+
+Already have phone numbers with Twilio? Connect them to Optima Voice using SIP trunking for enterprise-grade call routing.
+
+**What you'll need:**
+- Active Twilio account
+- Twilio phone number(s)
+- Elastic SIP Trunking enabled
+- Basic SIP/VoIP knowledge
+
+**Time to complete:** 15-20 minutes
+
+---
+
+## Step 1: Get SIP Credentials from Optima Voice
+
+1. Log into Optima Voice
+2. Navigate to **Phone Numbers**
+3. Click **"Add Number"** → **"Manual Entry"** tab
+4. Fill in:
+   - **Name:** "Twilio - Support Line" (your identifier)
+   - **Phone Number:** Your Twilio number (format: +1234567890)
+   - **Agent:** Select agent
+5. Enable **"Configure Outbound"** if making outbound calls
+6. Click **"Save"**
+
+**Copy the provided credentials:**
+- SIP URI
+- Username
+- Password
+
+---
+
+## Step 2: Create SIP Trunk in Twilio
+
+1. Log into [Twilio Console](https://console.twilio.com)
+2. Navigate to **Elastic SIP Trunking** → **Trunks**
+3. Click **"Create new SIP Trunk"**
+4. Enter:
+   - **Friendly Name:** Optima Voice Integration
+5. Click **"Create"**
+
+---
+
+## Step 3: Configure Origination (Inbound Calls)
+
+### Add Origination SIP URI
+
+1. In your new trunk, go to **"Origination"** tab
+2. Click **"Add new Origination SIP URI"**
+3. Enter the **SIP URI from Optima Voice**:
+   ```
+   sip:username@sip.optima-voice.com
+   ```
+4. Set:
+   - **Priority:** 10 (lower = higher priority)
+   - **Weight:** 10
+   - **Enabled:** ✅ Checked
+5. Click **"Add"**
+
+### Authentication (Optional but Recommended)
+
+1. Still in **"Origination"** tab
+2. Scroll to **"Authentication"**
+3. Click **"Add new Credential List"**
+4. Create a credential list:
+   - **Name:** Optima Voice Credentials
+5. Click **"Create"**
+6. Add credential:
+   - **Username:** From Optima Voice
+   - **Password:** From Optima Voice
+7. Click **"Save"**
+8. Associate credential list with the trunk
+
+---
+
+## Step 4: Configure Termination (Outbound Calls)
+
+<Note>
+Only needed if your Optima Voice agents make outbound calls.
+</Note>
+
+1. Go to **"Termination"** tab
+2. Set **"Termination SIP URI"**:
+   ```
+   sip.twilio.com
+   ```
+3. Click **"Add new Termination Credential"**:
+   - **Username:** Your Twilio Account SID
+   - **Password:** Your Twilio Auth Token
+4. **IP Access Control List:** Add Optima Voice IP ranges (contact support for IPs)
+5. Click **"Save"**
+
+---
+
+## Step 5: Assign Phone Numbers
+
+1. In Twilio Console, go to **Phone Numbers** → **Manage** → **Active numbers**
+2. Click on the number you want to connect
+3. Under **"Voice & Fax"**:
+   - **Configure with:** SIP Trunk
+   - **SIP Trunk:** Select "Optima Voice Integration"
+4. Click **"Save"**
+
+Repeat for each number.
+
+---
+
+## Step 6: Test the Connection
+
+### Make a Test Call
+
+1. Call your Twilio number
+2. Verify:
+   - ✅ Call connects to Optima Voice agent
+   - ✅ Agent greeting plays
+   - ✅ Clear audio (no echo or delay)
+   - ✅ Agent responds correctly
+
+### Check Logs
+
+**Twilio:**
+1. Console → Monitor → Logs → Calls
+2. Find your test call
+3. Check for errors
+
+**Optima Voice:**
+1. Call Management page
+2. Verify call logged correctly
+3. Play recording, read transcript
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Calls don't reach Optima Voice">
+    **Check:**
+    - Is phone number assigned to correct SIP Trunk?
+    - Is Origination SIP URI correct?
+    - Are credentials configured (if required)?
+    
+    **Debug:**
+    - Check Twilio Call Logs for errors
+    - Look for "11200" error (HTTP retrieval failure)
+    - Verify SIP URI is reachable: `sip:username@sip.optima-voice.com`
+  </Accordion>
+  
+  <Accordion title="No audio or one-way audio">
+    **Common causes:**
+    - Firewall blocking RTP
+    - Codec mismatch
+    - NAT traversal issues
+    
+    **Solutions:**
+    - Ensure G.711 codec enabled on both sides
+    - Check Twilio IP ranges allowed through firewall
+    - Enable STUN/TURN if behind NAT
+  </Accordion>
+  
+  <Accordion title="Calls drop after 30 seconds">
+    **Likely cause:** No media (audio) flowing.
+    
+    **Check:**
+    - Codec compatibility (use G.711)
+    - RTP ports open (UDP 10000-20000)
+    - Twilio's "Record" option off (can cause issues)
+  </Accordion>
+  
+  <Accordion title="Authentication failures">
+    **Error 401 or 407:**
+    - Double-check username/password in Twilio credential list
+    - Copy-paste from Optima Voice (no typos)
+    - Ensure credential list is associated with trunk
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Advanced Configuration
+
+### Enable Secure Trunking (TLS/SRTP)
+
+For encrypted voice:
+
+**In Twilio:**
+1. Origination tab → Encryption: **Enabled**
+2. Update SIP URI to use `sips:` (secure SIP):
+   ```
+   sips:username@sip.optima-voice.com:5061
+   ```
+
+**In Optima Voice:**
+1. Phone Numbers → Edit number
+2. Transport: **TLS**
+3. Media Encryption: **SRTP**
+4. Save
+
+### Geo-Redundancy & Failover
+
+Set up backup routing:
+
+**In Twilio:**
+1. Origination tab
+2. Add multiple SIP URIs with different priorities:
+   ```
+   Priority 10: sip:username@sip1.optima-voice.com (primary)
+   Priority 20: sip:username@sip2.optima-voice.com (backup)
+   ```
+
+Twilio will try priority 10 first, then fail over to 20 if unreachable.
+
+### Call Screening
+
+Reject unwanted calls before reaching Optima Voice:
+
+**In Twilio:**
+1. Phone Numbers → Active numbers → Your number
+2. **Voice Configuration:**
+   - **Configure with:** TwiML App
+3. Create TwiML App with screening logic:
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <Response>
+       <Dial>
+           <Sip>sip:username@sip.optima-voice.com</Sip>
+       </Dial>
+   </Response>
+   ```
+
+Add `<Reject>` for spam numbers, `<Gather>` for IVR, etc.
+
+---
+
+## Billing
+
+**Twilio Charges:**
+- Phone number rental: $1/month (US local), $2/month (toll-free)
+- Inbound trunk minutes: $0.0085/min
+- Outbound trunk minutes: $0.013/min (US)
+
+**Optima Voice Charges:**
+- Standard platform fee
+- No additional per-minute charges
+
+<Tip>
+Twilio SIP trunking is cost-effective for high-volume businesses. If you have 1000+ minutes/month, this setup is cheaper than purchasing through Optima Voice.
+</Tip>
+
+---
+
+## Migration from Direct Twilio → Optima Voice
+
+Already using Twilio for voice but want AI agents?
+
+**Process:**
+1. Create SIP trunk (steps above)
+2. Test with one number first
+3. Gradually migrate other numbers
+4. Keep Twilio console for billing/analytics
+
+**No downtime:** Switch numbers individually, test each one.
+
+---
+
+## Best Practices
+
+✅ **DO:**
+- Enable HTTPS/TLS for production calls
+- Set up failover URIs for redundancy
+- Monitor both Twilio and Optima Voice logs
+- Use Twilio's Debugger for troubleshooting
+- Keep credentials secure (use environment variables)
+
+❌ **DON'T:**
+- Hardcode credentials in TwiML
+- Use plain SIP (unencrypted) for sensitive calls
+- Forward toll-free numbers without testing (higher fraud risk)
+- Ignore 401/407 auth errors (fix immediately)
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Telnyx Setup" icon="phone" href="/sip-trunks/telnyx-setup">
+    Alternative SIP provider
+  </Card>
+  
+  <Card title="Zadarma Setup" icon="globe" href="/sip-trunks/zadarma-setup">
+    International numbers
+  </Card>
+  
+  <Card title="Agent Configuration" icon="sliders" href="/agent-configuration">
+    Customize agent behavior
+  </Card>
+  
+  <Card title="Call Management" icon="list" href="/call-management">
+    View call logs and recordings
+  </Card>
+</CardGroup>
