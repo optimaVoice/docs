@@ -1,0 +1,204 @@
+---
+title: "Troubleshooting"
+description: "Solutions to common issues"
+---
+
+Quick answers to problems you might encounter.
+
+---
+
+## Calls not connecting
+
+<AccordionGroup>
+  <Accordion title="Call rings but agent doesn't answer">
+    - Check: Is a phone number assigned to the agent?
+    - Verify: Does the agent have a voice selected?
+    - Confirm: Are Voice Instructions not empty?
+  </Accordion>
+  <Accordion title="Call fails immediately">
+    - Check: Is your subscription active? (Go to Billing)
+    - Verify: Are you calling from a supported region?
+    - Try: Wait 2 minutes after purchasing a number (provisioning delay)
+  </Accordion>
+  <Accordion title="Call connects but hangs up">
+    - Check: Is Max Call Duration too short?
+    - Verify: No audio issues on your end?
+    - Try: Call from a different phone or network
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+First calls take 2-3 seconds to connect. The agent is initializing.
+</Tip>
+
+---
+
+## Agent not responding correctly
+
+<AccordionGroup>
+  <Accordion title="Agent gives wrong information">
+    - Update Voice Instructions with correct details
+    - Upload a knowledge base document with accurate info
+    - Lower creativity setting (try 0.4 instead of 0.6)
+  </Accordion>
+  <Accordion title="Agent says 'I don't know'">
+    - Add the missing information to Voice Instructions
+    - Upload relevant documents to knowledge base
+    - Check: Is the question something the agent should know?
+  </Accordion>
+  <Accordion title="Agent is too robotic">
+    - Increase creativity setting (try 0.7)
+    - Add to instructions: "Use a friendly, conversational tone"
+    - Change to a more natural-sounding voice
+  </Accordion>
+  <Accordion title="Agent is too chatty">
+    - Lower creativity setting (try 0.4)
+    - Add to instructions: "Keep responses under 30 seconds"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Voice issues
+
+<AccordionGroup>
+  <Accordion title="Voice sounds unnatural">
+    - Try a different voice (preview first)
+    - Some voices work better for certain content
+    - Check: Is audio quality good on your end?
+  </Accordion>
+  <Accordion title="Can't understand the voice">
+    - Switch to a clearer voice
+    - Check: Is the voice in your customer's language?
+    - Try: Voices rated 4-5 stars
+  </Accordion>
+  <Accordion title="Word is pronounced wrong">
+    - Add pronunciation hints to Voice Instructions
+    - Example: "When saying 'Optima,' pronounce it 'Op-tih-mah'"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Phone number issues
+
+<AccordionGroup>
+  <Accordion title="Number shows 'Unassigned'">
+    - Assign it to an agent in Phone Numbers settings
+    - Unassigned numbers don't route calls anywhere
+  </Accordion>
+  <Accordion title="Wrong number type (local vs toll-free)">
+    - Purchase a new number with the type you need
+    - Delete the old number if not needed
+  </Accordion>
+  <Accordion title="Number not working after purchase">
+    - Wait 2 minutes for provisioning to complete
+    - Check status in Phone Numbers list
+    - Contact support if still not working
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Billing questions
+
+<AccordionGroup>
+  <Accordion title="Charged but shouldn't have been">
+    - Check: Did you have a paid plan?
+    - Verify: No accidental upgrades?
+    - Contact billing@optima-voice.com for refunds
+  </Accordion>
+  <Accordion title="Minutes used but weren't in call">
+    - Check call logs for unknown calls
+    - Failed calls still use minutes in some cases
+    - Review Settings → Usage for details
+  </Accordion>
+  <Accordion title="Can't upgrade plan">
+    - Check: Payment method valid?
+    - Try: Different card or PayPal
+    - Contact support if issues persist
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Knowledge base issues
+
+<AccordionGroup>
+  <Accordion title="Agent doesn't use knowledge base">
+    - Wait 60 seconds for processing to complete
+    - Check: Green checkmark shows it's ready
+    - Add to instructions: "Use the knowledge base for detailed questions"
+  </Accordion>
+  <Accordion title="Upload fails">
+    - Check: File under 10 MB?
+    - Verify: PDF, TXT, or DOCX format?
+    - Confirm: Under 50 MB total for your org
+  </Accordion>
+  <Accordion title="Wrong answer from knowledge">
+    - Update the source document
+    - Edit or delete the old version
+    - Check: Is correct info higher priority?
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Action/integration issues
+
+<AccordionGroup>
+  <Accordion title="OAuth connection fails">
+    - Allow popups for app.optima-voice.com
+    - Try: Incognito/private browser window
+    - Check: Using correct account credentials
+  </Accordion>
+  <Accordion title="Agent doesn't perform action">
+    - Check: Action enabled in agent settings?
+    - Verify: Instructions tell agent when to do it
+    - Confirm: Connected account still authorized
+  </Accordion>
+  <Accordion title="Action fails mid-call">
+    - Reconnect the integration
+    - Check: Account has write permissions?
+    - Verify: Data being sent is valid
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Audio quality
+
+<AccordionGroup>
+  <Accordion title="Audio is choppy">
+    - Check: Internet connection (need 1+ Mbps)
+    - Try: Different network
+    - Close: Other bandwidth-heavy apps
+  </Accordion>
+  <Accordion title="Echo or feedback">
+    - Usually a caller-side issue
+    - Try: Different phone or headset
+    - Check: Speaker volume not too high
+  </Accordion>
+  <Accordion title="Agent sounds muffled">
+    - Check: Your audio device
+    - Try: Different headphones or phone
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still need help?
+
+<CardGroup cols={2}>
+  <Card title="Email Support" icon="mail" href="mailto:support@optima-voice.com">
+    Get help from our team
+  </Card>
+  <Card title="System Status" icon="activity" href="https://status.optima-voice.com">
+    Check if there are outages
+  </Card>
+</CardGroup>
+
+**Include in your message:**
+- What you tried
+- Any error messages
+- Your account email

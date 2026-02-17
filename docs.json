@@ -26,6 +26,19 @@
             ]
           },
           {
+            "group": "Billing & Plans",
+            "pages": [
+              "billing",
+              "use-cases"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "troubleshooting"
+            ]
+          },
+          {
             "group": "SIP Trunks",
             "pages": [
               "sip-trunks/telnyx-setup",
