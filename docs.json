@@ -10,16 +10,12 @@
   "favicon": "/favicon.svg",
   "fonts": {
     "heading": {
-      "family": "Vollkorn",
-      "source": "/fonts/Vollkorn-Variable.woff2",
-      "format": "woff2",
-      "weight": 500
+      "family": "Playfair Display",
+      "weight": 700
     },
     "body": {
-      "family": "Vela Sans",
-      "source": "/fonts/VelaSans-Variable.woff2",
-      "format": "woff2",
-      "weight": 700
+      "family": "Inter",
+      "weight": 400
     }
   },
   "rounded": "relaxed",
