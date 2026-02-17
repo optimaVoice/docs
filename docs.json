@@ -9,14 +9,7 @@
   },
   "favicon": "/favicon.svg",
   "fonts": {
-    "heading": {
-      "family": "Playfair Display",
-      "weight": 700
-    },
-    "body": {
-      "family": "Inter",
-      "weight": 400
-    }
+    "family": "Inter"
   },
   "rounded": "relaxed",
   "navigation": {
