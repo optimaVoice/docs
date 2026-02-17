@@ -32,26 +32,60 @@
             "group": "Getting Started",
             "pages": [
               "getting-started",
+              "agent-configuration",
               "voice-selection",
               "phone-numbers"
             ]
           },
           {
-            "group": "Guides",
+            "group": "Features",
             "pages": [
-              "agent-configuration",
               "knowledge-base",
               "actions",
               "call-management",
-              "billing"
+              "integrations-overview"
+            ]
+          },
+          {
+            "group": "Phone Providers",
+            "pages": [
+              "sip-trunks/telnyx-setup",
+              "sip-trunks/twilio-setup",
+              "sip-trunks/zadarma-setup"
             ]
           },
           {
             "group": "Resources",
             "pages": [
+              "billing",
+              "security",
               "use-cases",
               "best-practices",
+              "faq",
               "troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Optima API",
+        "groups": [
+          {
+            "group": "API",
+            "pages": [
+              "api-overview"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog/index",
+              "changelog/2026-02-17"
             ]
           }
         ]
