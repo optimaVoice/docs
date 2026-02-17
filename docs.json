@@ -81,7 +81,9 @@
   "footer": {
     "socials": {
       "x": "https://x.com/optimavoice",
-      "linkedin": "https://linkedin.com/company/optima-voice"
+      "linkedin": "https://linkedin.com/company/optima-voice",
+      "telegram": "https://t.me/optimavoice",
+      "website": "https://optima-voice.com"
     }
   }
 }
