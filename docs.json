@@ -1,13 +1,26 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Optima Voice",
   "colors": {
-    "primary": "#3B82F6",
-    "light": "#60A5FA",
-    "dark": "#1E40AF"
+    "primary": "#1A1A1A",
+    "light": "#6C63FF",
+    "dark": "#1A1A1A",
+    "background": {
+      "light": "#FAFAFA",
+      "dark": "#0A0A0A"
+    }
   },
   "favicon": "/favicon.svg",
+  "fonts": {
+    "heading": {
+      "family": "DM Serif Display"
+    },
+    "body": {
+      "family": "DM Sans"
+    }
+  },
+  "rounded": "relaxed",
   "navigation": {
     "tabs": [
       {
@@ -53,11 +66,6 @@
           "anchor": "Support",
           "href": "mailto:support@optima-voice.com",
           "icon": "headset"
-        },
-        {
-          "anchor": "Status",
-          "href": "https://status.optima-voice.com",
-          "icon": "activity"
         }
       ]
     }
@@ -75,7 +83,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
+      "label": "Start Free",
       "href": "https://app.optima-voice.com"
     }
   },
