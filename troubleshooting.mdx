@@ -1,187 +1,205 @@
 ---
 title: "Troubleshooting"
-description: "Solutions to common issues"
+description: "Fix common issues with your Optima Voice agent"
 ---
 
-Quick answers to problems you might encounter.
+Quick answers to the most common problems. Find what you need and get back to business.
 
 ---
 
-## Calls not connecting
+## Can't connect or call not answered
 
 <AccordionGroup>
-  <Accordion title="Call rings but agent doesn't answer">
-    - Check: Is a phone number assigned to the agent?
-    - Verify: Does the agent have a voice selected?
-    - Confirm: Are Voice Instructions not empty?
+  <Accordion title="Agent doesn't answer when I call">
+    **Check these things:**
+
+    1. Is the number assigned to an agent?
+       - Go to Phone Numbers → find your number
+       - Make sure it shows "Active" status
+
+    2. Is the agent configured?
+       - Check that Voice is selected
+       - Verify Voice Instructions are not empty
+
+    3. Wait 2 minutes
+       - Sometimes provisioning takes a minute
+
+    <Tip>
+    Try calling from a different phone to rule out your device.
+    </Tip>
   </Accordion>
-  <Accordion title="Call fails immediately">
-    - Check: Is your subscription active? (Go to Billing)
-    - Verify: Are you calling from a supported region?
-    - Try: Wait 2 minutes after purchasing a number (provisioning delay)
+
+  <Accordion title="Call immediately">
+    - Check fails your internet connection
+    - Refresh the dashboard
+    - Try a different network
   </Accordion>
-  <Accordion title="Call connects but hangs up">
-    - Check: Is Max Call Duration too short?
-    - Verify: No audio issues on your end?
-    - Try: Call from a different phone or network
+
+  <Accordion title="First call takes too long to connect">
+    Normal! First call after inactivity takes 2-3 seconds to initialize. Subsequent calls connect faster.
   </Accordion>
 </AccordionGroup>
 
-<Tip>
-First calls take 2-3 seconds to connect. The agent is initializing.
-</Tip>
+---
+
+## Audio and voice issues
+
+<AccordionGroup>
+  <Accordion title="Audio quality is poor or choppy">
+    **Try these fixes:**
+
+    1. Check your internet speed
+       - Need: At least 1 Mbps
+       - Test at speedtest.net
+
+    2. Use a different network
+       - Switch from WiFi to ethernet
+       - Or try a different WiFi
+
+    3. Close other bandwidth-heavy apps
+       - Video calls, large downloads
+
+    <Tip>
+    If callers report static, ask them to check their connection.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Voice sounds robotic">
+    - Lower the Creativity (Temperature) setting
+    - Try a different voice
+    - Check: Are responses very short? The AI may be rushing
+  </Accordion>
+
+  <Accordion title="Words are mispronounced">
+    Add pronunciation hints to Voice Instructions:
+
+    ```
+    Pronunciation guide:
+    - "Optima" = "Op-tih-mah"
+    - "Nguyen" = "Win"
+    - "GIF" = "Jif" (not "Gif")
+    ```
+  </Accordion>
+
+  <Accordion title="Agent talks too fast or too slow">
+    Adjust the Speed setting in Voice options. Start around 0.9-1.0 for natural pacing.
+  </Accordion>
+</AccordionGroup>
 
 ---
 
-## Agent not responding correctly
+## Agent behavior problems
 
 <AccordionGroup>
-  <Accordion title="Agent gives wrong information">
-    - Update Voice Instructions with correct details
-    - Upload a knowledge base document with accurate info
-    - Lower creativity setting (try 0.4 instead of 0.6)
+  <Accordion title="Agent gives wrong or inaccurate information">
+    **Fix it:**
+
+    1. Update Voice Instructions with correct info
+    2. Upload documents to Knowledge Base
+    3. Include specific examples in instructions
+
+    <Tip>
+    Instead of "We offer cleaning," write: "Teeth cleaning costs $120 and takes 45 minutes."
+    </Tip>
   </Accordion>
-  <Accordion title="Agent says 'I don't know'">
-    - Add the missing information to Voice Instructions
-    - Upload relevant documents to knowledge base
-    - Check: Is the question something the agent should know?
+
+  <Accordion title="Agent is too brief or doesn't elaborate">
+    Add to Voice Instructions:
+    ```
+    - Provide thorough answers
+    - Include relevant details
+    - Ask if they need more information
+    ```
   </Accordion>
-  <Accordion title="Agent is too robotic">
-    - Increase creativity setting (try 0.7)
-    - Add to instructions: "Use a friendly, conversational tone"
-    - Change to a more natural-sounding voice
-  </Accordion>
+
   <Accordion title="Agent is too chatty">
-    - Lower creativity setting (try 0.4)
-    - Add to instructions: "Keep responses under 30 seconds"
+    Add to Voice Instructions:
+    ```
+    - Keep responses concise
+    - Under 30 seconds unless caller asks for more
+    - Get to the point quickly
+    ```
+  </Accordion>
+
+  <Accordion title="Agent doesn't use the knowledge base">
+    Make sure Voice Instructions mention it:
+    ```
+    Use the Knowledge Base to answer detailed questions about our services, pricing, and policies.
+    ```
+  </Accordion>
+
+  <Accordion title="Agent hangs up unexpectedly">
+    Check Max Call Duration in Advanced Settings. Increase it if calls are ending too soon.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Voice issues
+## Action and integration issues
 
 <AccordionGroup>
-  <Accordion title="Voice sounds unnatural">
-    - Try a different voice (preview first)
-    - Some voices work better for certain content
-    - Check: Is audio quality good on your end?
+  <Accordion title="Calendar bookings aren't working">
+    1. Reconnect Google Calendar
+    2. Check that Calendar has availability
+    3. Verify permissions in Google account
+    4. Make sure instructions mention the calendar
   </Accordion>
-  <Accordion title="Can't understand the voice">
-    - Switch to a clearer voice
-    - Check: Is the voice in your customer's language?
-    - Try: Voices rated 4-5 stars
+
+  <Accordion title="Emails aren't sending">
+    1. Reconnect Gmail
+    2. Check: Is the customer email valid?
+    3. Verify "Send Email" action is enabled
+    for errors 4. Look in Call Management
   </Accordion>
-  <Accordion title="Word is pronounced wrong">
-    - Add pronunciation hints to Voice Instructions
-    - Example: "When saying 'Optima,' pronounce it 'Op-tih-mah'"
+
+  <Accordion title="Slack notifications not working">
+    1. Reconnect Slack
+    2. Check: Is the channel name correct?
+    3. Verify action is enabled in agent settings
+    4. Make sure bot has channel access
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Phone number issues
+## Account and billing
 
 <AccordionGroup>
-  <Accordion title="Number shows 'Unassigned'">
-    - Assign it to an agent in Phone Numbers settings
-    - Unassigned numbers don't route calls anywhere
+  <Accordion title="Can't access the dashboard">
+    - Clear browser cache
+    - Try incognito/private mode
+    - Use a different browser
   </Accordion>
-  <Accordion title="Wrong number type (local vs toll-free)">
-    - Purchase a new number with the type you need
-    - Delete the old number if not needed
+
+  <Accordion title="Payment won't go through">
+    - Check: Card number, expiry, CVV correct?
+    - Try a different card
+    - Contact your bank
   </Accordion>
-  <Accordion title="Number not working after purchase">
-    - Wait 2 minutes for provisioning to complete
-    - Check status in Phone Numbers list
-    - Contact support if still not working
+
+  <Accordion title="Minutes used up">
+    - Upgrade your plan in Settings → Billing
+    - Or wait for next billing cycle
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## Billing questions
+## Call recordings and transcripts
 
 <AccordionGroup>
-  <Accordion title="Charged but shouldn't have been">
-    - Check: Did you have a paid plan?
-    - Verify: No accidental upgrades?
-    - Contact billing@optima-voice.com for refunds
+  <Accordion title="Recording doesn't appear">
+    Wait 30 seconds after call ends, then refresh. Some calls (very short or failed) may not have recordings.
   </Accordion>
-  <Accordion title="Minutes used but weren't in call">
-    - Check call logs for unknown calls
-    - Failed calls still use minutes in some cases
-    - Review Settings → Usage for details
-  </Accordion>
-  <Accordion title="Can't upgrade plan">
-    - Check: Payment method valid?
-    - Try: Different card or PayPal
-    - Contact support if issues persist
-  </Accordion>
-</AccordionGroup>
 
----
-
-## Knowledge base issues
-
-<AccordionGroup>
-  <Accordion title="Agent doesn't use knowledge base">
-    - Wait 60 seconds for processing to complete
-    - Check: Green checkmark shows it's ready
-    - Add to instructions: "Use the knowledge base for detailed questions"
+  <Accordion title="Transcript is inaccurate">
+    Poor audio causes bad transcripts. Improve audio quality and try again.
   </Accordion>
-  <Accordion title="Upload fails">
-    - Check: File under 10 MB?
-    - Verify: PDF, TXT, or DOCX format?
-    - Confirm: Under 50 MB total for your org
-  </Accordion>
-  <Accordion title="Wrong answer from knowledge">
-    - Update the source document
-    - Edit or delete the old version
-    - Check: Is correct info higher priority?
-  </Accordion>
-</AccordionGroup>
 
----
-
-## Action/integration issues
-
-<AccordionGroup>
-  <Accordion title="OAuth connection fails">
-    - Allow popups for app.optima-voice.com
-    - Try: Incognito/private browser window
-    - Check: Using correct account credentials
-  </Accordion>
-  <Accordion title="Agent doesn't perform action">
-    - Check: Action enabled in agent settings?
-    - Verify: Instructions tell agent when to do it
-    - Confirm: Connected account still authorized
-  </Accordion>
-  <Accordion title="Action fails mid-call">
-    - Reconnect the integration
-    - Check: Account has write permissions?
-    - Verify: Data being sent is valid
-  </Accordion>
-</AccordionGroup>
-
----
-
-## Audio quality
-
-<AccordionGroup>
-  <Accordion title="Audio is choppy">
-    - Check: Internet connection (need 1+ Mbps)
-    - Try: Different network
-    - Close: Other bandwidth-heavy apps
-  </Accordion>
-  <Accordion title="Echo or feedback">
-    - Usually a caller-side issue
-    - Try: Different phone or headset
-    - Check: Speaker volume not too high
-  </Accordion>
-  <Accordion title="Agent sounds muffled">
-    - Check: Your audio device
-    - Try: Different headphones or phone
+  <Accordion title="Can't find a specific call">
+    - Clear all filters
+    - Check the date range
+    - Calls are kept for 90 days (or 180 on Pro)
   </Accordion>
 </AccordionGroup>
 
@@ -193,12 +211,11 @@ First calls take 2-3 seconds to connect. The agent is initializing.
   <Card title="Email Support" icon="mail" href="mailto:support@optima-voice.com">
     Get help from our team
   </Card>
-  <Card title="System Status" icon="activity" href="https://status.optima-voice.com">
-    Check if there are outages
+  <Card title="Status Page" icon="activity" href="https://status.optima-voice.com">
+    Check for outages
   </Card>
 </CardGroup>
 
-**Include in your message:**
-- What you tried
-- Any error messages
-- Your account email
+<Tip>
+When contacting support, include: your agent name, time of issue, and what you tried.
+</Tip>
