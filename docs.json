@@ -11,13 +11,13 @@
   "fonts": {
     "heading": {
       "family": "Vollkorn",
-      "source": "/fonts/Vollkorn-Medium.woff2",
+      "source": "/fonts/Vollkorn-Variable.woff2",
       "format": "woff2",
       "weight": 500
     },
     "body": {
-      "family": "VelaSans",
-      "source": "/fonts/VelaSans-Bold.woff2",
+      "family": "Vela Sans",
+      "source": "/fonts/VelaSans-Variable.woff2",
       "format": "woff2",
       "weight": 700
     }
