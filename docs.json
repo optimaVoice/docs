@@ -57,11 +57,6 @@
           "anchor": "Dashboard",
           "href": "https://app.optima-voice.com",
           "icon": "gauge"
-        },
-        {
-          "anchor": "Support",
-          "href": "mailto:support@optima-voice.com",
-          "icon": "headset"
         }
       ]
     }
@@ -71,12 +66,6 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:support@optima-voice.com"
-      }
-    ],
     "primary": {
       "type": "button",
       "label": "Start Free",
