@@ -10,10 +10,14 @@
   "favicon": "/favicon.svg",
   "fonts": {
     "heading": {
-      "family": "DM Serif Display"
+      "family": "Vollkorn",
+      "weight": 500
     },
     "body": {
-      "family": "DM Sans"
+      "family": "Vela Sans",
+      "source": "/fonts/VelaSans-Bold.woff2",
+      "format": "woff2",
+      "weight": 700
     }
   },
   "rounded": "relaxed",
