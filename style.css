@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('/fonts/Vollkorn-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vela Sans';
+  src: url('/fonts/VelaSans-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-family-headings-custom: 'Vollkorn', Georgia, 'Times New Roman', serif !important;
+  --font-family-body-custom: 'Vela Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+}

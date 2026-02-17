@@ -9,7 +9,18 @@
   },
   "favicon": "/favicon.svg",
   "fonts": {
-    "family": "Inter"
+    "heading": {
+      "family": "Vollkorn",
+      "source": "/fonts/Vollkorn-Variable.woff2",
+      "format": "woff2",
+      "weight": 500
+    },
+    "body": {
+      "family": "Vela Sans",
+      "source": "/fonts/VelaSans-Variable.woff2",
+      "format": "woff2",
+      "weight": 700
+    }
   },
   "rounded": "relaxed",
   "navigation": {
