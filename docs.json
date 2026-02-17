@@ -17,24 +17,25 @@
             "group": "Getting Started",
             "pages": [
               "getting-started",
-              "agent-configuration",
               "voice-selection",
-              "phone-numbers",
+              "phone-numbers"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "agent-configuration",
               "knowledge-base",
               "actions",
-              "call-management"
+              "call-management",
+              "billing"
             ]
           },
           {
-            "group": "Billing & Plans",
+            "group": "Resources",
             "pages": [
-              "billing",
-              "use-cases"
-            ]
-          },
-          {
-            "group": "Help",
-            "pages": [
+              "use-cases",
+              "best-practices",
               "troubleshooting"
             ]
           }
