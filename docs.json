@@ -11,10 +11,12 @@
   "fonts": {
     "heading": {
       "family": "Vollkorn",
+      "source": "/fonts/Vollkorn-Medium.woff2",
+      "format": "woff2",
       "weight": 500
     },
     "body": {
-      "family": "Vela Sans",
+      "family": "VelaSans",
       "source": "/fonts/VelaSans-Bold.woff2",
       "format": "woff2",
       "weight": 700
