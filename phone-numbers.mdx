@@ -67,54 +67,37 @@ You'll see up to 20 available numbers:
 
 ---
 
-## Manual Entry (Existing Numbers)
+## Manual Setup (Existing Numbers)
 
-Already have a business number? Forward it to Optima Voice.
+Already have a business number with another provider? Connect it to Optima Voice so your AI agent handles incoming calls — no need to buy a new number.
 
-### Step 1: Enter Number Details
+### Step 1: Add Your Number
 
 1. Click **"Add Number"** button
-2. Select **"Manual Entry"** tab
+2. Select **"Manual Configuration"** tab
 3. Fill in:
-   - **Name:** Identifier (e.g., "Main Reception Line")
-   - **Phone Number:** Your existing number (format: +1234567890)
-   - **Agent:** Which agent handles this number
+   - **Trunk Name:** A label for this number (e.g., "Main Reception Line")
+   - **Phone Number:** Your existing number, starting with + (e.g., +12025551234)
+   - **Assigned Agent:** Which agent should answer calls to this number
+4. Click **"Create Phone Number"**
 
-### Step 2: Configure Outbound (Optional)
+### Step 2: Point Your Provider to Optima Voice
 
-If your agent needs to make outbound calls:
+In your phone provider's settings, set the call destination to:
 
-<AccordionGroup>
-  <Accordion title="Outbound Configuration (Advanced)">
-    Enable outbound calling to let your agent initiate calls:
-    
-    **Required fields:**
-    - **Outbound Address:** Your SIP provider's address
-    - **Auth Username:** SIP account username
-    - **Auth Password:** SIP account password
-    
-    **Optional settings:**
-    - **Transport:** AUTO (recommended), UDP, TCP, TLS
-    - **Media Encryption:** DISABLE (default), SRTP
-    - **Krisp Noise Cancellation:** On/Off
-    
-    <Note>
-    Most users don't need outbound. This is for advanced call center setups.
-    </Note>
-  </Accordion>
-</AccordionGroup>
+```
+sip:sip.optima-voice.com:5060
+```
 
-### Step 3: Set Up Call Forwarding
+This tells your provider to send incoming calls to Optima Voice. See the [full setup guide](/sip-trunks/manual-setup) for step-by-step instructions for Telnyx, Twilio, Zadarma, and other providers.
 
-After adding your number to Optima Voice:
+### Step 3: Test It
 
-1. **We'll provide SIP credentials** (displayed after setup)
-2. **Configure your carrier** to forward calls to our SIP address
-3. **Test the connection** by calling your number
+Call your number from another phone. Your agent should answer within a few seconds.
 
-<Warning>
-Manual setup requires technical knowledge of SIP/VoIP. Most users prefer purchasing numbers directly through Optima Voice for instant setup.
-</Warning>
+<Note>
+Need help finding where to set this in your provider? See the [Manual Setup Guide](/sip-trunks/manual-setup) for provider-specific instructions and troubleshooting.
+</Note>
 
 ---
 
