@@ -10,31 +10,31 @@ Already have phone numbers with Telnyx? Connect them to Optima Voice using SIP t
 **What you'll need:**
 - Active Telnyx account
 - Telnyx phone number(s)
-- Basic SIP/VoIP knowledge
+- Access to the [Telnyx Portal](https://portal.telnyx.com)
 
-**Time to complete:** 15-20 minutes
+**Time to complete:** 15–20 minutes
 
 ---
 
-## Step 1: Get SIP Credentials from Optima Voice
+## Step 1: Add Your Number in Optima Voice
 
 1. Log into Optima Voice
 2. Navigate to **Phone Numbers**
-3. Click **"Add Number"** → **"Manual Entry"** tab
-4. Fill in basic details:
-   - **Name:** "Telnyx - Main Line" (or your identifier)
+3. Click **"Add Number"** → **"Manual Configuration"** tab
+4. Fill in:
+   - **Trunk Name:** "Telnyx - Main Line" (or any label you prefer)
    - **Phone Number:** Your Telnyx number (format: +1234567890)
-   - **Agent:** Select which agent handles calls
-5. Enable **"Configure Outbound"** if needed
-6. Click **"Save"**
+   - **Assigned Agent:** Select which agent handles calls
+5. Click **"Create Phone Number"**
 
-**Optima Voice will provide:**
-- SIP URI (e.g., `sip:username@optima-voice.com`)
-- Username
-- Password
+**The destination you'll enter in Telnyx:**
+
+```
+sip:sip.optima-voice.com:5060
+```
 
 <Note>
-Copy these credentials - you'll need them for Telnyx configuration.
+You'll paste this address into the Telnyx portal in the steps below.
 </Note>
 
 ---
@@ -59,15 +59,6 @@ Copy these credentials - you'll need them for Telnyx configuration.
    - **ANI Override:** None
    - **CNAM Listing:** Disabled
 
-### Credentials
-
-1. Go to **"Credentials"** tab
-2. Click **"Add Credential"**
-3. Enter:
-   - **Username:** From Optima Voice SIP credentials
-   - **Password:** From Optima Voice SIP credentials
-4. Click **"Save"**
-
 ### Outbound Voice Profile
 
 1. Go to **"Outbound"** tab
@@ -80,14 +71,9 @@ Copy these credentials - you'll need them for Telnyx configuration.
 
 1. Go to **"Inbound"** tab
 2. Set **"Send SIP INVITE to"**:
-   - **Destination:** The SIP URI from Optima Voice
-   - **Protocol:** UDP (or match Optima Voice settings)
+   - **Destination:** `sip:sip.optima-voice.com:5060`
+   - **Protocol:** UDP
    - **Port:** 5060
-
-Example:
-```
-sip:username@sip.optima-voice.com:5060
-```
 
 3. **Codecs:** Enable G.711 (both μ-law and A-law)
 4. **DTMF:** RFC 2833

@@ -49,6 +49,7 @@
           {
             "group": "Phone Providers",
             "pages": [
+              "sip-trunks/manual-setup",
               "sip-trunks/telnyx-setup",
               "sip-trunks/twilio-setup",
               "sip-trunks/zadarma-setup"

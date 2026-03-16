@@ -1,0 +1,146 @@
+---
+title: "Manual Phone Number Setup"
+description: "Connect your existing business phone number to Optima Voice in minutes"
+---
+
+## Overview
+
+Already have a phone number with your current provider? You can connect it to Optima Voice so your AI agent handles all incoming calls — no need to buy a new number.
+
+**How it works:** You tell your phone provider to send calls to Optima Voice. We handle the rest.
+
+**Time to complete:** 5–10 minutes
+
+---
+
+## What You Need
+
+Before you start:
+
+- A phone number with an existing provider (Telnyx, Twilio, Vonage, Zadarma, or any VoIP provider)
+- Access to your provider's settings panel
+- An Optima Voice account with at least one agent set up
+
+---
+
+## Step 1: Add Your Number in Optima Voice
+
+1. Log in to [Optima Voice](https://app.optima-voice.com)
+2. Click **Phone Numbers** in the left menu
+3. Click the **Add Number** button
+4. Select the **Manual Configuration** tab
+5. Fill in the details:
+   - **Trunk Name** — A label for this number (e.g. "Main Reception Line")
+   - **Phone Number** — Your existing number, starting with + and country code (e.g. `+12025551234`)
+   - **Assigned Agent** — Choose which agent should answer calls to this number
+6. Click **Create Phone Number**
+
+<Note>
+You can change the assigned agent at any time from the Phone Numbers page.
+</Note>
+
+---
+
+## Step 2: Point Your Provider to Optima Voice
+
+In your phone provider's settings, find where you configure **call forwarding** or **SIP destination** and set the destination to:
+
+```
+sip:sip.optima-voice.com:5060
+```
+
+This tells your provider to send incoming calls to Optima Voice, where your AI agent will pick them up.
+
+The exact steps depend on which provider you use:
+
+<CardGroup cols={2}>
+  <Card title="Telnyx" icon="phone" href="/sip-trunks/telnyx-setup">
+    Step-by-step guide for Telnyx
+  </Card>
+  <Card title="Twilio" icon="phone" href="/sip-trunks/twilio-setup">
+    Step-by-step guide for Twilio
+  </Card>
+  <Card title="Zadarma" icon="phone" href="/sip-trunks/zadarma-setup">
+    Step-by-step guide for Zadarma
+  </Card>
+  <Card title="Other Providers" icon="globe" href="#other-providers">
+    Generic instructions for any provider
+  </Card>
+</CardGroup>
+
+---
+
+## Other Providers
+
+If your provider is not listed above, look for one of these options in your account settings:
+
+| What to look for | What to enter |
+|-----------------|---------------|
+| SIP destination / SIP URI | `sip:sip.optima-voice.com:5060` |
+| Termination URI | `sip:sip.optima-voice.com:5060` |
+| Call forwarding destination | `sip:sip.optima-voice.com:5060` |
+| Trunk destination | `sip:sip.optima-voice.com:5060` |
+| SIP server / SIP host | `sip.optima-voice.com` (port `5060`) |
+
+If you're unsure, search your provider's help center for "forward calls to a SIP URI" or contact their support.
+
+---
+
+## Step 3: Test It
+
+Once you've saved the settings in your provider:
+
+1. Call your phone number from another phone
+2. Your Optima Voice agent should answer within a few seconds
+3. Check **Call History** in Optima Voice to confirm the call was received
+
+<Tip>
+It can take up to 2 minutes for your provider's settings to take effect. If the call doesn't connect right away, wait a moment and try again.
+</Tip>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Calls aren't reaching my agent">
+    **Check these first:**
+    - Did you save the new destination in your provider's settings?
+    - Is the SIP destination entered exactly as shown? (`sip:sip.optima-voice.com:5060`)
+    - Is your phone number added in Optima Voice with the correct format? (must start with + and country code)
+    - Is an agent assigned to the number in Optima Voice?
+
+    If everything looks right, wait 2 minutes and try again — provider settings sometimes take a moment to propagate.
+  </Accordion>
+
+  <Accordion title="Calls connect but there's no audio">
+    This is usually a setting on your provider's side. Try:
+    - Making sure your provider allows calls to external SIP destinations
+    - Checking that your provider account is active and in good standing
+    - Contacting your provider's support and asking them to verify routing to `sip.optima-voice.com:5060`
+  </Accordion>
+
+  <Accordion title="I can't find where to set the SIP destination in my provider">
+    Look for terms like:
+    - "Call forwarding"
+    - "SIP trunking"
+    - "Termination settings"
+    - "Inbound routing"
+    - "Voice settings"
+
+    If you still can't find it, contact your provider's support team and say: _"I need to forward inbound calls to an external SIP address: sip:sip.optima-voice.com:5060"_
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Configure Your Agent" icon="sliders" href="/agent-configuration">
+    Set up your agent's greeting and instructions
+  </Card>
+  <Card title="View Call History" icon="list" href="/call-management">
+    See every call your agent has handled
+  </Card>
+</CardGroup>
