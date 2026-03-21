@@ -1,15 +1,15 @@
 ---
 title: "Phone Numbers"
-description: "Purchase, manage, and assign phone numbers to your AI agents"
+description: "Purchase, manage, and assign US phone numbers to your AI agents"
 ---
 
 ## Overview
 
-Phone numbers are how customers reach your AI agents. Optima Voice makes it easy to purchase new numbers or bring your existing ones.
+Phone numbers are how customers reach your AI agents. Purchase a US number directly within Optima Voice, or connect your existing business number.
 
 **Two options:**
-1. **Purchase from Telnyx** (recommended) - Instant provisioning, $1-5/month
-2. **Manual Entry** - Use your existing business number
+1. **Purchase a number** (recommended) — Instant provisioning, US local and toll-free numbers
+2. **Manual entry** — Use your existing business number via SIP
 
 ---
 
@@ -23,17 +23,12 @@ Phone numbers are how customers reach your AI agents. Optima Voice makes it easy
 
 ### Step 2: Search for Numbers
 
-**Choose your country:**
-- Select from 75+ supported countries
-- Popular: United States, Canada, United Kingdom, Australia
-- Each country has different pricing ($1-5/month typically)
-
-**Optional: Filter by area code**
-- Leave blank to see all available numbers
-- Enter specific area code for local presence
+**Filter by area code** (optional):
+- Leave blank to see all available US numbers
+- Enter a specific area code for local presence
   - Example: "212" for New York City
   - Example: "415" for San Francisco
-  - Example: "020" for London
+  - Example: "305" for Miami
 
 **Click "Search"**
 
@@ -42,17 +37,17 @@ Phone numbers are how customers reach your AI agents. Optima Voice makes it easy
 You'll see up to 20 available numbers:
 
 ```
-+1 (555) 123-4567  |  Local  |  $2.00/month  |  [Purchase]
-+1 (555) 234-5678  |  Local  |  $2.00/month  |  [Purchase]
-+1 (555) 345-6789  |  Toll-Free | $5.00/month | [Purchase]
++1 (555) 123-4567  |  Local      |  $2.00/month  |  [Purchase]
++1 (555) 234-5678  |  Local      |  $2.00/month  |  [Purchase]
++1 (555) 345-6789  |  Toll-Free  |  $5.00/month  |  [Purchase]
 ```
 
 **Number types:**
-- **Local:** Standard area code numbers
-- **Toll-Free:** 800, 888, 877, etc. (higher cost, professional appearance)
+- **Local:** Standard area code numbers — great for regional businesses
+- **Toll-Free:** 800, 888, 877, etc. — professional appearance for national reach
 
 <Tip>
-**Local numbers** are better for regional businesses. **Toll-free** numbers work well for national companies and add credibility.
+**Local numbers** build trust with nearby customers. **Toll-free** numbers work well for national brands and add credibility.
 </Tip>
 
 ### Step 4: Purchase & Assign
@@ -64,6 +59,10 @@ You'll see up to 20 available numbers:
 5. Click **"Assign"**
 
 **Done!** Your number is live immediately.
+
+<Note>
+Each plan includes a set number of phone numbers (Starter: 1, Growth: 2, Business: 5). Additional numbers cost $3/month each. See [Billing](/billing) for details.
+</Note>
 
 ---
 
@@ -192,42 +191,40 @@ After purchasing or configuring:
     - Number not assigned to agent
     - Agent is not configured (missing voice, instructions)
     - Provisioning still in progress (wait 2 minutes after purchase)
-    
+
     **Solutions:**
-    - Check Phone Numbers page - is number assigned?
-    - Check agent settings - is everything configured?
+    - Check Phone Numbers page — is number assigned?
+    - Check agent settings — is everything configured?
     - Try again in 2-3 minutes
   </Accordion>
-  
+
   <Accordion title="Audio quality is poor">
     **Possible causes:**
     - Network congestion
     - Low bandwidth
-    - Krisp noise cancellation off
-    
+
     **Solutions:**
-    - Enable Krisp Noise Cancellation in number settings
     - Check your internet connection (agents need 1+ Mbps)
-    - Try calling from different location/network
+    - Try calling from a different location or network
   </Accordion>
-  
+
   <Accordion title="Agent doesn't respond">
     **Possible causes:**
-    - Agent instructions are empty/too short
+    - Agent instructions are empty or too short
     - Voice model not selected
     - Backend service issue
-    
+
     **Solutions:**
     - Check agent Voice Instructions (minimum 50 characters)
     - Verify voice is selected in agent settings
     - Contact support if issue persists
   </Accordion>
-  
-  <Accordion title="Calls drop after X seconds">
+
+  <Accordion title="Calls drop after a few seconds">
     **Possible causes:**
     - Max Call Duration limit reached
     - Agent explicitly ended call
-    
+
     **Solutions:**
     - Check agent Advanced Settings → Max Call Duration
     - Review call transcript to see if agent ended it intentionally
@@ -239,25 +236,21 @@ After purchasing or configuring:
 
 ## Billing & Costs
 
-### Purchase Costs
+### Phone Number Pricing
 
 Numbers are billed monthly:
 
-| Type | Price Range | Billing |
-|------|-------------|---------|
-| **Local (US)** | $1.00 - $2.00/month | Monthly subscription |
-| **Local (International)** | $2.00 - $5.00/month | Varies by country |
+| Type | Price | Billing |
+|------|-------|---------|
+| **Local (US)** | $1.00 – $2.00/month | Monthly subscription |
 | **Toll-Free (US)** | $5.00/month | Monthly subscription |
 
-**Included:**
-- Unlimited inbound calls
-- Unlimited minutes
+Numbers beyond your plan's included allowance cost an additional **$3/month each**.
+
+**Included with every number:**
+- Unlimited inbound calls (billed per call on your plan)
 - HD voice quality
 - Call recording & transcripts
-
-**Not included:**
-- Outbound calls (requires separate SIP provider)
-- International forwarding (extra fees may apply)
 
 ### Cancellation
 
@@ -283,8 +276,7 @@ Keep numbers you might use later. At $1-2/month, it's cheaper than losing a good
 - **Purchase multiple** if you have multiple agents (reception, sales, support)
 
 ❌ **DON'T:**
-- Use vanity numbers with letters (hard to remember: 1-800-FLOWERS vs 1-800-356-9377)
-- Buy numbers in random cities (looks unprofessional if customer is in New York and sees Los Angeles number)
+- Buy numbers in random cities (looks unprofessional if customer is in New York and sees a Los Angeles number)
 - Reuse personal mobile numbers (keep business and personal separate)
 
 ### Assignment Strategy
@@ -349,26 +341,30 @@ Don't delete the number in Optima Voice until the port completes. Deletion makes
   <Accordion title="Can I have multiple numbers for one agent?">
     Yes! Assign as many numbers as you want to a single agent. Useful for tracking marketing campaigns or providing multiple local numbers.
   </Accordion>
-  
+
   <Accordion title="What happens if I don't assign a number to an agent?">
     Callers hear a generic message: "This number is not configured. Please contact the business directly." You still pay monthly fees.
   </Accordion>
-  
+
   <Accordion title="Can I transfer a number between agents instantly?">
     Yes. Reassignment takes effect immediately. Active calls continue with the old agent; new calls go to the new agent.
   </Accordion>
-  
+
   <Accordion title="Do I own the number I purchase?">
     You lease the number from Telnyx. As long as you pay monthly fees, it's yours. If you cancel, the number returns to the pool.
   </Accordion>
-  
+
   <Accordion title="Can I get a specific number I found elsewhere?">
     Maybe. If it's available in our Telnyx inventory, yes. Search for it. If not found, it's already claimed.
   </Accordion>
-  
+
   <Accordion title="What's the difference between Local and Toll-Free?">
     - **Local:** Tied to geographic area code (e.g., 212 for NYC). Cheaper ($1-2/month).
     - **Toll-Free:** 800/888/877 numbers. National reach. More expensive ($5/month). Professional appearance.
+  </Accordion>
+
+  <Accordion title="Why can I only purchase US numbers?">
+    We currently support US phone numbers only. International numbers are on our roadmap. In the meantime, you can connect international numbers from your own provider via [SIP trunking](/sip-trunks/manual-setup).
   </Accordion>
 </AccordionGroup>
 
@@ -380,15 +376,15 @@ Don't delete the number in Optima Voice until the port completes. Deletion makes
   <Card title="Test Your Agent" icon="flask" href="/getting-started#step-7-make-a-test-call">
     Call your number and verify everything works
   </Card>
-  
+
   <Card title="View Call Logs" icon="list" href="/call-management">
     See every call your agents handle
   </Card>
-  
+
   <Card title="Configure Agents" icon="sliders" href="/agent-configuration">
     Fine-tune agent behavior and settings
   </Card>
-  
+
   <Card title="Add Knowledge" icon="book" href="/knowledge-base">
     Upload documents for smarter responses
   </Card>
